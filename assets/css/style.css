@@ -3,7 +3,7 @@
 * Updated: Mar 10 2023 with Bootstrap v5.2.3
 * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
 * Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* License: https://bootstrapmade.com/license/                                           ORIGINAL
 */
 
 /*--------------------------------------------------------------
@@ -268,43 +268,84 @@ h6 {
 /**
 * Mobile Navigation 
 */
-.mobile-nav-toggle {
-  display: none;
-}
-
-@media (max-width: 991px) {
-  .mobile-nav-toggle {
-    display: block;
-  }
-
-  .navbar ul {
-    display: none;
-  }
-}
-
-.navbar {
-  position: relative;
-  background: #333;
-  height: 50px;
-  padding: 0 20px;
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar li {
-  display: inline-block;
-  width: 120px;
-  text-align: center;
-  line-height: 50px;
+  display: block;
+  position: relative;
 }
 
 .navbar a {
-  color: #fff;
-  text-decoration: none;
   display: block;
+  padding: 10px 15px;
 }
 
-.navbar a:hover {
-  background: #555;
+.navbar ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
 }
+
+.navbar ul ul li {
+  width: 100%;
+}
+
+.navbar ul ul a {
+  padding: 10px 30px;
+  background: #333;
+}
+
+.navbar ul ul ul {
+  left: 100%;
+  top: 0;
+}
+
+.navbar li:hover > ul {
+  display: inherit;
+}
+
+@media (max-width: 991px) {
+  .navbar ul {
+    display: block;
+    height: auto;
+  }
+
+  .navbar li {
+    display: block;
+    width: 100%;
+  }
+
+  .navbar ul ul {
+    position: static;
+  }
+
+  .navbar ul ul a {
+    background-color: #444;
+    color: #fff;
+  }
+
+  .navbar ul ul ul a {
+    background-color: #555;
+    color: #fff;
+  }
+
+  .navbar li:hover > ul > li {
+    display: block;
+  }
+
+  .mobile-nav-toggle {
+    display: inline;
+  }
+}
+
 
 
 /*--------------------------------------------------------------
