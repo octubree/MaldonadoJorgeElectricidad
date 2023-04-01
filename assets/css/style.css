@@ -15,9 +15,7 @@ body {
   color: #fff;
   position: relative;
   background: transparent;
-   
 }
-
 
 body::before {
   content: "";
@@ -30,10 +28,6 @@ body::before {
   height: 100vh;
   z-index: -1;
 }
-.inicio .nav-link.active {
-  display: none;
-}
-
 
 @media (min-width: 1024px) {
   body::before {
@@ -280,8 +274,11 @@ h6 {
   transition: 0.5s;
   position: fixed;
   right: 15px;
-  top: 15px;
-    animation: zoom-in 1s 4;
+  top: 85px;
+   
+  /* EFECTO ZOOM MENU---- */
+  
+  animation: zoom-in 1s 6;
 }
 
 @keyframes zoom-in {
@@ -295,21 +292,20 @@ h6 {
     transform: scale(1);
   }
 }
-
 @media (max-width: 991px) {
   .mobile-nav-toggle {
-    display: none;
+    display: block;
   }
 
   .navbar ul {
-    display: inline-block;
+    display: none;
   }
 }
 
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
-  top: 0;
+  top: 5px;
   right: 0;
   left: 0;
   bottom: 0;
