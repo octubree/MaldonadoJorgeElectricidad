@@ -29,6 +29,23 @@ body::before {
   z-index: -1;
 }
 
+/* FLECHA BAJAR ---- */
+
+      /* FLECHA GIF----- */
+      #gif-container {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      #gif-container img {
+        width: 50px;
+        height: 50px;
+        transform: scaleY(-1);
+      }
+      
+
 @media (min-width: 1024px) {
   body::before {
     background-attachment: fixed;
