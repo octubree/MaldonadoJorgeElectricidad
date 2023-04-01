@@ -44,7 +44,29 @@ body::before {
         height: 50px;
         transform: scaleY(-1);
       }
-      
+      /* Flecha GIF solo en pantallas de escritorio */
+@media screen and (min-width: 768px) {
+  #gif-container {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #gif-container img {
+    width: 50px;
+    height: 50px;
+    transform: scaleY(-1);
+  }
+}
+
+/* Ocultar la flecha GIF en dispositivos móviles */
+@media screen and (max-width: 767px) {
+  #gif-container {
+    display: none;
+  }
+}
+
 
 @media (min-width: 1024px) {
   body::before {
