@@ -5,6 +5,18 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+  // OCULTA IMAGEN UTE CUANDO ABRE MENÚ EN MOBILES
+
+  const mobileOnlyDiv = document.querySelector('.mobile-only');
+  const navigationMenuElement = document.querySelector('#navbar');
+  
+  navigationMenuElement.addEventListener('click', () => {
+    mobileOnlyDiv.style.display = 'none';
+  });
+
+// TERMINA OCULTA IMAGEN CUANDO ABRE MENU EN MOBILES
+
 (function() {
   "use strict";
 
