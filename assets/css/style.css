@@ -22,7 +22,7 @@
 
 /* CLASE PARA PUNTA DEL ESTE, PARA QUE EL PADDING SOLO SE APLIQUE EN DISPOSITIVOS MOBILES */
 
-#mi-h2 {
+/* #mi-h2 {
   padding-bottom: 30%;
   font-size: x-large;
   font-weight: bold;
@@ -40,7 +40,7 @@
     max-width: inherit !important;
     margin: inherit !important;
   }
-}
+} */
 
 /* TERMINA CLASE PARA PUNTA DEL ESTE */
 
