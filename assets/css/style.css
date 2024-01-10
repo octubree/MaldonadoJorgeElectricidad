@@ -22,13 +22,23 @@
 
 /* CLASE PARA PUNTA DEL ESTE, PARA QUE EL PADDING SOLO SE APLIQUE EN DISPOSITIVOS MOBILES */
 
-.mi-clase {
-  display: none;
+#mi-h2 {
+  padding-bottom: 30%;
+  font-size: x-large;
+  font-weight: bold;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-@media (max-width: 1024px) {
-  .mi-clase {
+@media (max-width: 768px) {
+  #mi-h2 {
+    padding-bottom: 0;
+    font-size: inherit;
+    font-weight: inherit;
     display: none;
+    max-width: inherit;
+    margin: inherit;
   }
 }
 
