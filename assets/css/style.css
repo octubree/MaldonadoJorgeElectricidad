@@ -20,7 +20,20 @@
 }
 /* TERMINA BOTON WHATSAPP  */
 
+/* CLASE PARA PUNTA DEL ESTE, PARA QUE EL PADDING SOLO SE APLIQUE EN DISPOSITIVOS MOBILES */
 
+.mi-clase {
+  padding-bottom: 30%;
+}
+
+@media (min-width: 576px) {
+  .mi-clase {
+    padding-bottom: 0;
+  }
+}  
+
+
+/* TERMINA CLASE PARA PUNTA DEL ESTE */
 
 
 
