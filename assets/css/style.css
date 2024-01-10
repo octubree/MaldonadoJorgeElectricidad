@@ -31,7 +31,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #mi-h2 {
     padding-bottom: 0;
     font-size: inherit;
