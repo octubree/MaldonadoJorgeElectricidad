@@ -6,6 +6,30 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
+// BANNER EFECTO 
+document.addEventListener("DOMContentLoaded", function() {
+  const bannerText = document.querySelector(".banner p");
+  let position = 100;
+
+  function animateBannerText() {
+    position -= 0.2; // Ajusta la velocidad aquí
+
+    bannerText.style.left = position + "%";
+
+    if (position < -20) {
+      position = 100;
+    }
+
+    requestAnimationFrame(animateBannerText);
+  }
+
+  animateBannerText();
+});
+// TERMINA BANNER EFECTO 
+
+
+
   // OCULTA IMAGEN UTE CUANDO ABRE MENÚ EN MOBILES
 
   const mobileOnlyDiv = document.querySelector('.mobile-only');

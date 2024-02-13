@@ -10,6 +10,36 @@
 # General
 --------------------------------------------------------------*/
 
+/* BANNER EFECTO  */
+
+.banner {
+  height: 20px;
+  background-color: yellow;
+  width: 100%; /* Ajusta el ancho según tu página */
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.banner p {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+  position: absolute;
+  top: 50%;
+  left: 100%; /* Posición inicial fuera del banner */
+  transform: translateY(-50%);
+}
+
+
+/* TERMINA BANNER EFECTO  */
+
+
+
 /* BOTON WHATSAPP ------ */
 
 /* Oculta el botón de WhatsApp y el enlace de llamada sólo en pantallas grandes */
