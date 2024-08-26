@@ -8,24 +8,24 @@
 
 
 // BANNER EFECTO 
-document.addEventListener("DOMContentLoaded", function() {
-  const bannerText = document.querySelector(".banner p");
-  let position = 100;
+// document.addEventListener("DOMContentLoaded", function() {
+//   const bannerText = document.querySelector(".banner p");
+//   let position = 100;
 
-  function animateBannerText() {
-    position -= 0.2; // Ajusta la velocidad aquí
+//   function animateBannerText() {
+//     position -= 0.2; // Ajusta la velocidad aquí
 
-    bannerText.style.left = position + "%";
+//     bannerText.style.left = position + "%";
 
-    if (position < -20) {
-      position = 100;
-    }
+//     if (position < -20) {
+//       position = 100;
+//     }
 
-    requestAnimationFrame(animateBannerText);
-  }
+//     requestAnimationFrame(animateBannerText);
+//   }
 
-  animateBannerText();
-});
+//   animateBannerText();
+// });
 // TERMINA BANNER EFECTO 
 
 
