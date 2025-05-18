@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Búsqueda on Electricidad para todos</title>
+    <link>https://web-pruebas.vercel.app/blog/buscar/</link>
+    <description>Recent content in Búsqueda on Electricidad para todos</description>
+    <generator>Hugo</generator>
+    <language>es-uy</language>
+    <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
+    <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
+    <atom:link href="https://web-pruebas.vercel.app/blog/buscar/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
