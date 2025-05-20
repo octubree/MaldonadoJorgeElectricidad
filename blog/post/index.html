@@ -138,7 +138,6 @@
 
 
 <script  src="https://www.jorge-electricidad.net/blog/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="https://www.jorge-electricidad.net/blog/js/scroll-button.js"></script>
 
  
   </head>
@@ -639,6 +638,137 @@ document.addEventListener("DOMContentLoaded", function () {
  </script>
 
 
+
+
+
+
+<div id="manus-scroll-container" style="position: fixed; bottom: 30px; right: 30px; z-index: 99999;"></div>
+
+<script>
+
+(function() {
+  
+  function createScrollButton() {
+    
+    var container = document.getElementById('manus-scroll-container');
+    if (!container) {
+      console.error('Contenedor no encontrado');
+      return;
+    }
+    
+    
+    container.innerHTML = '';
+    
+    
+    var button = document.createElement('button');
+    button.id = 'manus-scroll-to-top';
+    button.title = 'Volver arriba';
+    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>';
+    
+    
+    button.style.width = '56px';
+    button.style.height = '56px';
+    button.style.borderRadius = '50%';
+    button.style.backgroundColor = '#2c3e50';
+    button.style.color = '#fff';
+    button.style.border = 'none';
+    button.style.cursor = 'pointer';
+    button.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3 )';
+    button.style.display = 'flex';
+    button.style.alignItems = 'center';
+    button.style.justifyContent = 'center';
+    button.style.transition = 'all 0.3s ease';
+    button.style.opacity = '0.9';
+    
+    
+    container.appendChild(button);
+    
+    
+    var style = document.createElement('style');
+    style.textContent = `
+      @keyframes manusBounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-5px); }
+        60% { transform: translateY(-3px); }
+      }
+      #manus-scroll-to-top svg {
+        animation: manusBounce 2s infinite;
+      }
+      #manus-scroll-to-top:hover {
+        background-color: #3498db !important;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3) !important;
+        opacity: 1 !important;
+      }
+      @media (max-width: 768px) {
+        #manus-scroll-container {
+          bottom: 70px !important;
+          right: 20px !important;
+        }
+        #manus-scroll-to-top {
+          width: 50px !important;
+          height: 50px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return false;
+    });
+    
+    
+    function checkScrollPosition() {
+      if (window.pageYOffset > 300) {
+        container.style.display = 'block';
+      } else {
+        container.style.display = 'none';
+      }
+    }
+    
+    
+    checkScrollPosition();
+    
+    
+    var scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function() {
+          checkScrollPosition();
+          scrollTimeout = null;
+        }, 100);
+      }
+    });
+  }
+  
+  
+  function ensureButtonExists() {
+    createScrollButton();
+    
+    
+    setTimeout(createScrollButton, 1000);
+    setTimeout(createScrollButton, 3000);
+    setTimeout(createScrollButton, 5000);
+  }
+  
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureButtonExists);
+  } else {
+    ensureButtonExists();
+  }
+  
+  
+  window.addEventListener('load', ensureButtonExists);
+})();
+</script>
 
     
   </body>
