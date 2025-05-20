@@ -188,6 +188,8 @@
 
 
 <script  src="https://www.jorge-electricidad.net/blog/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="https://www.jorge-electricidad.net/blog/js/scroll-button.js"></script>
+
  
   </head>
   <body>
@@ -783,131 +785,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
  </script>
 
-
-<button id="scroll-to-top" title="Volver arriba" style="display: none;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 15l-6-6-6 6"/>
-  </svg>
-</button>
-
-<style>
-#scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: #2c3e50;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  z-index: 9999;  
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3 );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  opacity: 0.9;  
-}
-
-#scroll-to-top:hover {
-  background-color: #3498db;
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  opacity: 1;
-}
-
-#scroll-to-top svg {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-5px);
-  }
-  60% {
-    transform: translateY(-3px);
-  }
-}
-
- 
-@media (max-width: 768px) {
-  #scroll-to-top {
-    bottom: 70px;  
-    right: 20px;
-    width: 50px;  
-    height: 50px;
-     
-    position: fixed !important;
-    display: flex !important;
-    visibility: visible !important;
-  }
-}
-</style>
-
-<script>
-
-document.addEventListener('DOMContentLoaded', function() {
-  
-  function setupScrollButton() {
-    var scrollButton = document.getElementById('scroll-to-top');
-    
-    if (!scrollButton) {
-      console.error('Botón de scroll no encontrado');
-      return;
-    }
-    
-    
-    function checkScrollPosition() {
-      if (window.pageYOffset > 300) {
-        scrollButton.style.display = 'flex';
-      } else {
-        scrollButton.style.display = 'none';
-      }
-    }
-    
-    
-    checkScrollPosition();
-    
-    
-    var scrollTimeout;
-    window.addEventListener('scroll', function() {
-      if (!scrollTimeout) {
-        scrollTimeout = setTimeout(function() {
-          checkScrollPosition();
-          scrollTimeout = null;
-        }, 100);
-      }
-    });
-    
-    
-    scrollButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-  
-  
-  setupScrollButton();
-  
-  
-  window.addEventListener('load', function() {
-    setupScrollButton();
-  });
-  
-  
-  setTimeout(function() {
-    setupScrollButton();
-  }, 2000);
-});
-</script>
 
 
     
