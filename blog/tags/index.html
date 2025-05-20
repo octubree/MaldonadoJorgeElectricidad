@@ -734,18 +734,20 @@ document.addEventListener("DOMContentLoaded", function () {
   color: #fff;
   border: none;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 9999;  
   box-shadow: 0 4px 10px rgba(0,0,0,0.3 );
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  opacity: 0.9;  
 }
 
 #scroll-to-top:hover {
   background-color: #3498db;
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  opacity: 1;
 }
 
 #scroll-to-top svg {
@@ -763,28 +765,79 @@ document.addEventListener("DOMContentLoaded", function () {
     transform: translateY(-3px);
   }
 }
+
+ 
+@media (max-width: 768px) {
+  #scroll-to-top {
+    bottom: 70px;  
+    right: 20px;
+    width: 50px;  
+    height: 50px;
+     
+    position: fixed !important;
+    display: flex !important;
+    visibility: visible !important;
+  }
+}
 </style>
 
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
-  var scrollButton = document.getElementById('scroll-to-top');
   
-  
-  window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-      scrollButton.style.display = 'flex';
-    } else {
-      scrollButton.style.display = 'none';
+  function setupScrollButton() {
+    var scrollButton = document.getElementById('scroll-to-top');
+    
+    if (!scrollButton) {
+      console.error('Botón de scroll no encontrado');
+      return;
     }
-  });
-  
-  
-  scrollButton.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+    
+    
+    function checkScrollPosition() {
+      if (window.pageYOffset > 300) {
+        scrollButton.style.display = 'flex';
+      } else {
+        scrollButton.style.display = 'none';
+      }
+    }
+    
+    
+    checkScrollPosition();
+    
+    
+    var scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function() {
+          checkScrollPosition();
+          scrollTimeout = null;
+        }, 100);
+      }
     });
+    
+    
+    scrollButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  
+  
+  setupScrollButton();
+  
+  
+  window.addEventListener('load', function() {
+    setupScrollButton();
   });
+  
+  
+  setTimeout(function() {
+    setupScrollButton();
+  }, 2000);
 });
 </script>
 
