@@ -3,7 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.jorge-electricidad.net/blog/post/</loc>
-    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/tags/c%C3%A1maras/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/categories/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/post/2020/guia-para-comprar-c%C3%A1maras-de-seguridad/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/categories/seguridad/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/tags/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/tags/videovigilancia/</loc>
+    <lastmod>2025-05-19T00:00:00-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -22,17 +57,17 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.jorge-electricidad.net/blog/categories/</loc>
-    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.jorge-electricidad.net/blog/tags/cortes-de-luz/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.jorge-electricidad.net/blog/tags/disyuntor/</loc>
+    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.jorge-electricidad.net/blog/categories/dom%C3%B3tica/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -48,11 +83,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.jorge-electricidad.net/blog/tags/electricidad-domiciliaria/</loc>
-    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.jorge-electricidad.net/blog/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -93,11 +123,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.jorge-electricidad.net/blog/tags/punta-del-este/</loc>
-    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.jorge-electricidad.net/blog/tags/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
