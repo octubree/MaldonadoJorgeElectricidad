@@ -2,162 +2,172 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://example.org/post/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</loc>
+    <loc>https://example.org/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/automatizaci%C3%B3n/</loc>
+    <loc>https://example.org/tags/automatizaci%C3%B3n/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/c%C3%A1maras-de-seguridad/</loc>
+    <loc>https://example.org/tags/c%C3%A1maras-de-seguridad/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://example.org/categories/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/conectividad/</loc>
+    <loc>https://example.org/tags/conectividad/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/conectividad-e-integraci%C3%B3n-para-c%C3%A1maras-de-seguridad/</loc>
+    <loc>https://example.org/post/2020/conectividad-e-integraci%C3%B3n-para-c%C3%A1maras-de-seguridad/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/consideraciones-de-instalaci%C3%B3n-para-c%C3%A1maras-de-seguridad/</loc>
+    <loc>https://example.org/post/2020/consideraciones-de-instalaci%C3%B3n-para-c%C3%A1maras-de-seguridad/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/corto-circuitos/</loc>
+    <loc>https://example.org/tags/corto-circuitos/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/dom%C3%B3tica/</loc>
+    <loc>https://example.org/categories/dom%C3%B3tica/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/dom%C3%B3tica/</loc>
+    <loc>https://example.org/tags/dom%C3%B3tica/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</loc>
+    <loc>https://example.org/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/electricidad/</loc>
+    <loc>https://example.org/categories/electricidad/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/electricidad-obra-nueva/</loc>
+    <loc>https://example.org/tags/electricidad-obra-nueva/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://example.org/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/electricista/</loc>
+    <loc>https://example.org/tags/falla-electrica/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/falla-electrica/</loc>
+    <loc>https://example.org/post/2020/gu%C3%ADa-completa-para-la-instalaci%C3%B3n-de-c%C3%A1maras-de-seguridad-en-maldonado/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/gu%C3%ADa-completa-para-la-instalaci%C3%B3n-de-c%C3%A1maras-de-seguridad-en-maldonado/</loc>
+    <loc>https://example.org/post/2020/guia-rapida-cortes-de-luz-/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/guia-rapida-cortes-de-luz-/</loc>
+    <loc>https://example.org/tags/hogar/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/hogar-inteligente/</loc>
+    <loc>https://example.org/tags/hogar-inteligente/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/instalaci%C3%B3n/</loc>
+    <loc>https://example.org/tags/instalaci%C3%B3n/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/maldonado-/</loc>
+    <loc>https://example.org/tags/maldonado-/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/punta-del-este/</loc>
+    <loc>https://example.org/tags/mantenimiento-el%C3%A9ctrico/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/que-hacer-cuando-hay-cortocircuito/</loc>
+    <loc>https://example.org/tags/problemas-el%C3%A9ctricos/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/reparar-enchufes/</loc>
+    <loc>https://example.org/tags/punta-del-este/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/como-arreglar-un-enchufe/</loc>
+    <loc>https://example.org/tags/que-hacer-cuando-hay-cortocircuito/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/seguridad/</loc>
+    <loc>https://example.org/tags/reparar-enchufes/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2020/necesitas-un-electricista/</loc>
+    <loc>https://example.org/post/2020/como-arreglar-un-enchufe/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/servicio-electrico/</loc>
+    <loc>https://example.org/categories/seguridad/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://example.org/post/2020/necesitas-un-electricista/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/ute-que-potencia-contratar/</loc>
+    <loc>https://example.org/tags/servicio-electrico/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/videovigilancia/</loc>
+    <loc>https://example.org/tags/</loc>
+    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://example.org/tags/ute-que-potencia-contratar/</loc>
+    <lastmod>2025-05-17T01:23:16-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://example.org/tags/videovigilancia/</loc>
     <lastmod>2025-05-17T01:23:16-03:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

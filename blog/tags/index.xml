@@ -2,131 +2,145 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Electricidad para todos</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://example.org/tags/</link>
     <description>Recent content in Tags on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
     <lastBuildDate>Sat, 17 May 2025 01:23:16 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automatización</title>
-      <link>http://localhost:1313/tags/automatizaci%C3%B3n/</link>
+      <link>https://example.org/tags/automatizaci%C3%B3n/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/automatizaci%C3%B3n/</guid>
+      <guid>https://example.org/tags/automatizaci%C3%B3n/</guid>
       <description></description>
     </item>
     <item>
       <title>Cámaras De Seguridad</title>
-      <link>http://localhost:1313/tags/c%C3%A1maras-de-seguridad/</link>
+      <link>https://example.org/tags/c%C3%A1maras-de-seguridad/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/c%C3%A1maras-de-seguridad/</guid>
+      <guid>https://example.org/tags/c%C3%A1maras-de-seguridad/</guid>
       <description></description>
     </item>
     <item>
       <title>Conectividad</title>
-      <link>http://localhost:1313/tags/conectividad/</link>
+      <link>https://example.org/tags/conectividad/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/conectividad/</guid>
+      <guid>https://example.org/tags/conectividad/</guid>
       <description></description>
     </item>
     <item>
       <title>Corto Circuitos</title>
-      <link>http://localhost:1313/tags/corto-circuitos/</link>
+      <link>https://example.org/tags/corto-circuitos/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/corto-circuitos/</guid>
+      <guid>https://example.org/tags/corto-circuitos/</guid>
       <description></description>
     </item>
     <item>
       <title>Domótica</title>
-      <link>http://localhost:1313/tags/dom%C3%B3tica/</link>
+      <link>https://example.org/tags/dom%C3%B3tica/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/dom%C3%B3tica/</guid>
+      <guid>https://example.org/tags/dom%C3%B3tica/</guid>
       <description></description>
     </item>
     <item>
       <title>Electricidad Obra Nueva</title>
-      <link>http://localhost:1313/tags/electricidad-obra-nueva/</link>
+      <link>https://example.org/tags/electricidad-obra-nueva/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/electricidad-obra-nueva/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Electricista</title>
-      <link>http://localhost:1313/tags/electricista/</link>
-      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/electricista/</guid>
+      <guid>https://example.org/tags/electricidad-obra-nueva/</guid>
       <description></description>
     </item>
     <item>
       <title>Falla Electrica</title>
-      <link>http://localhost:1313/tags/falla-electrica/</link>
+      <link>https://example.org/tags/falla-electrica/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/falla-electrica/</guid>
+      <guid>https://example.org/tags/falla-electrica/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hogar</title>
+      <link>https://example.org/tags/hogar/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>https://example.org/tags/hogar/</guid>
       <description></description>
     </item>
     <item>
       <title>Hogar Inteligente</title>
-      <link>http://localhost:1313/tags/hogar-inteligente/</link>
+      <link>https://example.org/tags/hogar-inteligente/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/hogar-inteligente/</guid>
+      <guid>https://example.org/tags/hogar-inteligente/</guid>
       <description></description>
     </item>
     <item>
       <title>Instalación</title>
-      <link>http://localhost:1313/tags/instalaci%C3%B3n/</link>
+      <link>https://example.org/tags/instalaci%C3%B3n/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/instalaci%C3%B3n/</guid>
+      <guid>https://example.org/tags/instalaci%C3%B3n/</guid>
       <description></description>
     </item>
     <item>
       <title>Maldonado </title>
-      <link>http://localhost:1313/tags/maldonado-/</link>
+      <link>https://example.org/tags/maldonado-/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/maldonado-/</guid>
+      <guid>https://example.org/tags/maldonado-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mantenimiento Eléctrico</title>
+      <link>https://example.org/tags/mantenimiento-el%C3%A9ctrico/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>https://example.org/tags/mantenimiento-el%C3%A9ctrico/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Problemas Eléctricos</title>
+      <link>https://example.org/tags/problemas-el%C3%A9ctricos/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>https://example.org/tags/problemas-el%C3%A9ctricos/</guid>
       <description></description>
     </item>
     <item>
       <title>Punta Del Este</title>
-      <link>http://localhost:1313/tags/punta-del-este/</link>
+      <link>https://example.org/tags/punta-del-este/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/punta-del-este/</guid>
+      <guid>https://example.org/tags/punta-del-este/</guid>
       <description></description>
     </item>
     <item>
       <title>Que Hacer Cuando Hay Cortocircuito</title>
-      <link>http://localhost:1313/tags/que-hacer-cuando-hay-cortocircuito/</link>
+      <link>https://example.org/tags/que-hacer-cuando-hay-cortocircuito/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/que-hacer-cuando-hay-cortocircuito/</guid>
+      <guid>https://example.org/tags/que-hacer-cuando-hay-cortocircuito/</guid>
       <description></description>
     </item>
     <item>
       <title>Reparar Enchufes</title>
-      <link>http://localhost:1313/tags/reparar-enchufes/</link>
+      <link>https://example.org/tags/reparar-enchufes/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/reparar-enchufes/</guid>
+      <guid>https://example.org/tags/reparar-enchufes/</guid>
       <description></description>
     </item>
     <item>
       <title>Servicio Electrico</title>
-      <link>http://localhost:1313/tags/servicio-electrico/</link>
+      <link>https://example.org/tags/servicio-electrico/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/servicio-electrico/</guid>
+      <guid>https://example.org/tags/servicio-electrico/</guid>
       <description></description>
     </item>
     <item>
       <title>Ute Que Potencia Contratar</title>
-      <link>http://localhost:1313/tags/ute-que-potencia-contratar/</link>
+      <link>https://example.org/tags/ute-que-potencia-contratar/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/ute-que-potencia-contratar/</guid>
+      <guid>https://example.org/tags/ute-que-potencia-contratar/</guid>
       <description></description>
     </item>
     <item>
       <title>Videovigilancia</title>
-      <link>http://localhost:1313/tags/videovigilancia/</link>
+      <link>https://example.org/tags/videovigilancia/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/tags/videovigilancia/</guid>
+      <guid>https://example.org/tags/videovigilancia/</guid>
       <description></description>
     </item>
   </channel>
