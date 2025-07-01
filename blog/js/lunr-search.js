@@ -1,4 +1,3 @@
-// Modificación del archivo lunr-search.js para mejorar la funcionalidad SEO
 window.addEventListener("DOMContentLoaded", function(indexUrl) {
   let index = null;
   let lookup = null;
@@ -16,34 +15,29 @@ window.addEventListener("DOMContentLoaded", function(indexUrl) {
     if (!term) {
       return;
     }
-    
-    // Redireccionar a la página de búsqueda con URL limpia
-    window.location.href = "/buscar/?q=" + encodeURIComponent(term);
+    startSearch(term, false);
   }, false);
 
-  // Mantener la funcionalidad original para búsquedas en otras páginas
-  if (window.location.pathname !== "/buscar/" && window.location.pathname !== "/buscar/index.html") {
-    if (history.state && history.state.type == "search") {
-      startSearch(history.state.term, true);
-    }
-
-    window.addEventListener("popstate", function(event) {
-      if (event.state && event.state.type == "search") {
-        startSearch(event.state.term, true);
-      }
-      else if (origContent) {
-        let target = document.querySelector(".container[role=main]");
-        while (target.firstChild) {
-          target.removeChild(target.firstChild);
-        }
-
-        for (let node of origContent) {
-          target.appendChild(node);
-        }
-        origContent = null;
-      }
-    }, false);
+  if (history.state && history.state.type == "search") {
+    startSearch(history.state.term, true);
   }
+
+  window.addEventListener("popstate", function(event) {
+    if (event.state && event.state.type == "search") {
+      startSearch(event.state.term, true);
+    }
+    else if (origContent) {
+      let target = document.querySelector(".container[role=main]");
+      while (target.firstChild) {
+        target.removeChild(target.firstChild);
+      }
+
+      for (let node of origContent) {
+        target.appendChild(node);
+      }
+      origContent = null;
+    }
+  }, false);
 
   function startSearch(term, doNotAddState) {
     input.value = term;
@@ -84,7 +78,7 @@ window.addEventListener("DOMContentLoaded", function(indexUrl) {
 
       lookup = {};
       index = lunr(function() {
-        const language = document.documentElement.getAttribute("lang") || "es";
+        const language = document.documentElement.getAttribute("lang") || "en";
         if (language.length > 2)
           language = language.slice(0, 2);
         if (language != "en" && lunr.hasOwnProperty(language)) {
@@ -92,12 +86,12 @@ window.addEventListener("DOMContentLoaded", function(indexUrl) {
         }
 
         this.ref("uri");
-        this.field("title", { boost: 10 });
-        this.field("subtitle", { boost: 5 });
+        this.field("title");
+        this.field("subtitle");
         this.field("content");
-        this.field("description", { boost: 5 });
-        this.field("categories", { boost: 3 });
-        this.field("tags", { boost: 3 });
+        this.field("description");
+        this.field("categories");
+        this.field("tags");
 
         for (let document of documents) {
           this.add(document);
@@ -127,6 +121,8 @@ window.addEventListener("DOMContentLoaded", function(indexUrl) {
 
       let titleTemplate = document.getElementById("search-heading");
       let titleElement = titleTemplate.content.cloneNode(true);
+      // This is an overly simple pluralization scheme, it will only work
+      // for some languages.
 
       let title = titleElement.querySelector(".search-title");
       if (results.length == 0) {

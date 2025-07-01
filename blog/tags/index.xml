@@ -2,124 +2,131 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Electricidad para todos</title>
-    <link>https://www.jorge-electricidad.net/blog/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
-    <lastBuildDate>Mon, 19 May 2025 00:00:00 -0300</lastBuildDate>
-    <atom:link href="https://www.jorge-electricidad.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Cámaras</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/c%C3%A1maras/</link>
-      <pubDate>Mon, 19 May 2025 00:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/c%C3%A1maras/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Videovigilancia</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/videovigilancia/</link>
-      <pubDate>Mon, 19 May 2025 00:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/videovigilancia/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Sat, 17 May 2025 01:23:16 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automatización</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/automatizaci%C3%B3n/</link>
+      <link>http://localhost:1313/tags/automatizaci%C3%B3n/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/automatizaci%C3%B3n/</guid>
+      <guid>http://localhost:1313/tags/automatizaci%C3%B3n/</guid>
       <description></description>
     </item>
     <item>
-      <title>Cortes De Luz</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/cortes-de-luz/</link>
+      <title>Cámaras De Seguridad</title>
+      <link>http://localhost:1313/tags/c%C3%A1maras-de-seguridad/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/cortes-de-luz/</guid>
+      <guid>http://localhost:1313/tags/c%C3%A1maras-de-seguridad/</guid>
       <description></description>
     </item>
     <item>
-      <title>Disyuntor</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/disyuntor/</link>
+      <title>Conectividad</title>
+      <link>http://localhost:1313/tags/conectividad/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/disyuntor/</guid>
+      <guid>http://localhost:1313/tags/conectividad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Corto Circuitos</title>
+      <link>http://localhost:1313/tags/corto-circuitos/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>http://localhost:1313/tags/corto-circuitos/</guid>
       <description></description>
     </item>
     <item>
       <title>Domótica</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/dom%C3%B3tica/</link>
+      <link>http://localhost:1313/tags/dom%C3%B3tica/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/dom%C3%B3tica/</guid>
+      <guid>http://localhost:1313/tags/dom%C3%B3tica/</guid>
       <description></description>
     </item>
     <item>
-      <title>Electricidad Domiciliaria</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/electricidad-domiciliaria/</link>
+      <title>Electricidad Obra Nueva</title>
+      <link>http://localhost:1313/tags/electricidad-obra-nueva/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/electricidad-domiciliaria/</guid>
+      <guid>http://localhost:1313/tags/electricidad-obra-nueva/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Electricista</title>
+      <link>http://localhost:1313/tags/electricista/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>http://localhost:1313/tags/electricista/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Falla Electrica</title>
+      <link>http://localhost:1313/tags/falla-electrica/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>http://localhost:1313/tags/falla-electrica/</guid>
       <description></description>
     </item>
     <item>
       <title>Hogar Inteligente</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/hogar-inteligente/</link>
+      <link>http://localhost:1313/tags/hogar-inteligente/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/hogar-inteligente/</guid>
+      <guid>http://localhost:1313/tags/hogar-inteligente/</guid>
       <description></description>
     </item>
     <item>
-      <title>Hogares</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/hogares/</link>
+      <title>Instalación</title>
+      <link>http://localhost:1313/tags/instalaci%C3%B3n/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/hogares/</guid>
+      <guid>http://localhost:1313/tags/instalaci%C3%B3n/</guid>
       <description></description>
     </item>
     <item>
-      <title>Maldonado</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/maldonado/</link>
+      <title>Maldonado </title>
+      <link>http://localhost:1313/tags/maldonado-/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/maldonado/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Normativa Ute</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/normativa-ute/</link>
-      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/normativa-ute/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Potencia Contratada</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/potencia-contratada/</link>
-      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/potencia-contratada/</guid>
+      <guid>http://localhost:1313/tags/maldonado-/</guid>
       <description></description>
     </item>
     <item>
       <title>Punta Del Este</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/punta-del-este/</link>
+      <link>http://localhost:1313/tags/punta-del-este/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/punta-del-este/</guid>
+      <guid>http://localhost:1313/tags/punta-del-este/</guid>
       <description></description>
     </item>
     <item>
-      <title>Tramites Ute</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/tramites-ute/</link>
+      <title>Que Hacer Cuando Hay Cortocircuito</title>
+      <link>http://localhost:1313/tags/que-hacer-cuando-hay-cortocircuito/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/tramites-ute/</guid>
+      <guid>http://localhost:1313/tags/que-hacer-cuando-hay-cortocircuito/</guid>
       <description></description>
     </item>
     <item>
-      <title>UTE</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/ute/</link>
+      <title>Reparar Enchufes</title>
+      <link>http://localhost:1313/tags/reparar-enchufes/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/ute/</guid>
+      <guid>http://localhost:1313/tags/reparar-enchufes/</guid>
       <description></description>
     </item>
     <item>
-      <title>Newsletter</title>
-      <link>https://www.jorge-electricidad.net/blog/tags/newsletter/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/tags/newsletter/</guid>
+      <title>Servicio Electrico</title>
+      <link>http://localhost:1313/tags/servicio-electrico/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>http://localhost:1313/tags/servicio-electrico/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ute Que Potencia Contratar</title>
+      <link>http://localhost:1313/tags/ute-que-potencia-contratar/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>http://localhost:1313/tags/ute-que-potencia-contratar/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Videovigilancia</title>
+      <link>http://localhost:1313/tags/videovigilancia/</link>
+      <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>http://localhost:1313/tags/videovigilancia/</guid>
       <description></description>
     </item>
   </channel>
