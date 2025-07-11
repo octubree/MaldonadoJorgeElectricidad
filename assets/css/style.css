@@ -300,6 +300,7 @@ h6 {
   top: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.9);
+  z-index: 999; /* Aumentado para asegurar que esté por encima */
 }
 
 #header.header-top .social-links,
@@ -413,7 +414,7 @@ h6 {
   color: #fff;
   font-size: 88px;
   cursor: pointer;
-  display: inline-flex;
+  display: none; /* Oculto por defecto */
   line-height: 0;
   transition: 0.5s;
   position: fixed;
@@ -423,6 +424,12 @@ h6 {
   /* EFECTO ZOOM MENU---- */
   
   animation: zoom-in 1s 6;
+}
+
+@media (min-width: 992px) {
+  .mobile-nav-toggle {
+    display: none !important; /* Asegurarse de que esté oculto en escritorio */
+  }
 }
 
 @keyframes zoom-in {
@@ -953,6 +960,18 @@ section .container {
   margin: 0 3px 10px 3px;
   transition: all 0.3s ease-in-out;
   border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .portfolio #portfolio-flters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .portfolio #portfolio-flters li {
+    flex: 1 0 30%; /* Tres columnas en móvil */
+    margin: 5px;
+  }
 }
 
 .portfolio #portfolio-flters li:hover,
