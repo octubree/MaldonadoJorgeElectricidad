@@ -17,14 +17,14 @@
       padding: 20px;
     }
     .container-admin {
-      max-width: 600px;
+      max-width: 900px; /* Aumentado para la galería */
       margin: 50px auto;
       background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); /* Sombra verde para destacar */
     }
-    h1 {
+    h1, h2 {
       color: #18d26e; /* Color verde de tu sitio */
       text-align: center;
       margin-bottom: 30px;
@@ -88,8 +88,38 @@
     #auth-container #signOutButton:hover {
         background-color: #c82333;
     }
-    #portfolioFormContainer {
+    #portfolioFormContainer, #portfolioListContainer {
         display: none; /* Oculto por defecto hasta que el usuario inicie sesión */
+    }
+    .portfolio-item-admin {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .portfolio-item-admin img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 4px;
+    }
+    .portfolio-item-admin div {
+        flex-grow: 1;
+    }
+    .portfolio-item-admin button {
+        margin-left: 15px;
+        padding: 8px 12px;
+        background-color: #dc3545;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+    }
+    .portfolio-item-admin button:hover {
+        background-color: #c82333;
     }
   </style>
 </head>
@@ -131,6 +161,15 @@
 
       <p id="status"></p>
     </div>
+
+    <div id="portfolioListContainer">
+        <h2>Fotos Existentes</h2>
+        <div id="portfolioItemsList">
+            <!-- Las fotos se cargarán aquí -->
+        </div>
+        <p id="listStatus"></p>
+    </div>
+
   </div>
 
   <!-- Firebase SDKs -->
@@ -149,7 +188,6 @@
   appId: "1:196090520802:web:5db4ec18a826b05b"
   };
 
-
     // Inicializa Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -159,8 +197,110 @@
     const signInButton = document.getElementById('signInButton');
     const signOutButton = document.getElementById('signOutButton');
     const portfolioFormContainer = document.getElementById('portfolioFormContainer');
+    const portfolioListContainer = document.getElementById('portfolioListContainer');
     const portfolioForm = document.getElementById('portfolioForm');
     const statusParagraph = document.getElementById('status');
+    const portfolioItemsList = document.getElementById('portfolioItemsList');
+    const listStatus = document.getElementById('listStatus');
+
+    const categoryNames = {
+        "filter-luminarias": "Luminarias",
+        "filter-afines": "Afines",
+        "filter-firma-ute": "Firma UTE",
+        "filter-camaras-seguridad": "Cámaras de Seguridad"
+    };
+
+    // Función para cargar y mostrar los elementos del portfolio
+    async function loadPortfolioItems() {
+        listStatus.innerText = 'Cargando fotos...';
+        portfolioItemsList.innerHTML = ''; // Limpiar lista anterior
+        try {
+            const user = auth.currentUser;
+            if (!user) {
+                listStatus.innerText = 'Debes iniciar sesión para ver las fotos.';
+                return;
+            }
+            const idToken = await user.getIdToken();
+
+            const res = await fetch('/api/get-portfolio', {
+                headers: {
+                    'Authorization': `Bearer ${idToken}`
+                }
+            });
+            const items = await res.json();
+
+            if (res.ok) {
+                if (items.length === 0) {
+                    listStatus.innerText = 'No hay fotos en el portfolio.';
+                } else {
+                    listStatus.innerText = '';
+                    items.forEach(item => {
+                        const categoryDisplayName = categoryNames[item.category] || item.category;
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'portfolio-item-admin';
+                        itemDiv.innerHTML = `
+                            <img src="${item.imageUrl}" alt="${item.altText}">
+                            <div>
+                                <strong>${item.altText}</strong><br>
+                                <small>Categoría: ${categoryDisplayName}</small><br>
+                                <small>ID: ${item.id}</small>
+                            </div>
+                            <button data-id="${item.id}">Eliminar</button>
+                        `;
+                        portfolioItemsList.appendChild(itemDiv);
+                    });
+
+                    // Añadir event listeners a los botones de eliminar
+                    portfolioItemsList.querySelectorAll('button').forEach(button => {
+                        button.addEventListener('click', async (e) => {
+                            const itemId = e.target.dataset.id;
+                            if (confirm(`¿Estás seguro de que quieres eliminar esta foto? (ID: ${itemId})`)) {
+                                await deletePortfolioItem(itemId);
+                            }
+                        });
+                    });
+                }
+            } else {
+                listStatus.innerText = 'Error al cargar las fotos: ' + (items.message || 'desconocido');
+            }
+        } catch (error) {
+            console.error('Error al cargar las fotos:', error);
+            listStatus.innerText = 'Error de red o servidor al cargar las fotos.';
+        }
+    }
+
+    // Función para eliminar un elemento del portfolio
+    async function deletePortfolioItem(itemId) {
+        try {
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Debes iniciar sesión para eliminar imágenes.');
+                return;
+            }
+            const idToken = await user.getIdToken();
+
+            const res = await fetch('/api/delete-portfolio-item', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${idToken}`
+                },
+                body: JSON.stringify({ id: itemId })
+            });
+
+            const result = await res.json();
+
+            if (res.ok) {
+                alert('Foto eliminada con éxito.');
+                loadPortfolioItems(); // Recargar la lista
+            } else {
+                alert('Error al eliminar la foto: ' + (result.message || 'desconocido'));
+            }
+        } catch (error) {
+            console.error('Error al eliminar la foto:', error);
+            alert('Error de red o servidor al eliminar la foto.');
+        }
+    }
 
     // Manejar el estado de autenticación
     auth.onAuthStateChanged(user => {
@@ -169,11 +309,14 @@
         signInButton.style.display = 'none';
         signOutButton.style.display = 'inline-block';
         portfolioFormContainer.style.display = 'block';
+        portfolioListContainer.style.display = 'block';
+        loadPortfolioItems(); // Cargar fotos al iniciar sesión
       } else {
         authStatus.innerText = 'Por favor, inicia sesión para administrar el portfolio.';
         signInButton.style.display = 'inline-block';
         signOutButton.style.display = 'none';
         portfolioFormContainer.style.display = 'none';
+        portfolioListContainer.style.display = 'none';
       }
     });
 
@@ -229,6 +372,7 @@
         if (res.ok) {
           statusParagraph.innerText = '✅ Imagen agregada con éxito';
           form.reset();
+          loadPortfolioItems(); // Recargar la lista después de añadir
         } else {
           statusParagraph.innerText = '❌ Error: ' + (result.message || 'no se pudo subir');
         }
