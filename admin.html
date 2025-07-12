@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subir nueva imagen al portfolio</title>
+</head>
+<body>
+  <h1>Agregar foto al portfolio</h1>
+
+  <form id="portfolioForm">
+    <label>
+      URL de la imagen:
+      <input type="url" name="imageUrl" required />
+    </label><br/><br/>
+
+    <label>
+      Categoría:
+      <select name="category" required>
+        <option value="filter-luminarias">Luminarias</option>
+        <option value="filter-afines">Afines</option>
+        <option value="filter-firma-ute">Firma UTE</option>
+        <option value="filter-camaras-seguridad">Cámaras de Seguridad</option>
+      </select>
+    </label><br/><br/>
+
+    <label>
+      Texto alternativo:
+      <input type="text" name="altText" required />
+    </label><br/><br/>
+
+    <button type="submit">Subir</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const portfolioForm = document.getElementById('portfolioForm');
+      const statusParagraph = document.getElementById('status');
+
+      portfolioForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = {
+          imageUrl: form.imageUrl.value,
+          category: form.category.value,
+          altText: form.altText.value,
+        };
+
+        try {
+          const res = await fetch('/api/add-portfolio-item', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+
+          if (res.ok) {
+            statusParagraph.innerText = '✅ Imagen agregada con éxito';
+            form.reset();
+          } else {
+            statusParagraph.innerText = '❌ Error: ' + (result.message || 'no se pudo subir');
+          }
+        } catch (err) {
+          statusParagraph.innerText = '❌ Error de red o servidor';
+          console.error(err);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
