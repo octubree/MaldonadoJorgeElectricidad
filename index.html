@@ -784,7 +784,7 @@
       const portfolioContainer = document.querySelector('.portfolio-container');
 
       if (portfolioContainer) {
-        fetch('/api/get-portfolio')
+        fetch('/api/get-portfolio-public')
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
