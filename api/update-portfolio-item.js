@@ -1,3 +1,4 @@
+
 const admin = require('firebase-admin');
 
 if (!admin.apps.length) {
@@ -18,6 +19,10 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: "Firebase Admin SDK no inicializado. Revisa FIREBASE_SERVICE_ACCOUNT_KEY." });
   }
 
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Solo se permiten solicitudes POST' });
+  }
+
   // 1. Verificar autenticación
   const authorizationHeader = req.headers.authorization;
   if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
@@ -33,20 +38,25 @@ module.exports = async (req, res) => {
     //   return res.status(403).json({ message: 'Acceso denegado: No tienes permisos de administrador.' });
     // }
 
-    const portfolioItemsRef = db.collection('portfolioItems');
-    const snapshot = await portfolioItemsRef.orderBy('timestamp', 'desc').get();
+    const { id, imageUrl, category, altText } = req.body;
 
-    const items = [];
-    snapshot.forEach(doc => {
-      items.push({
-        id: doc.id,
-        ...doc.data()
-      });
-    });
+    // 2. Validación básica
+    if (!id || !imageUrl || !category || !altText) {
+      return res.status(400).json({ message: 'Faltan campos requeridos: id, imageUrl, category, altText' });
+    }
 
-    res.status(200).json(items);
+    const updatedItem = {
+      imageUrl,
+      category,
+      altText,
+      updatedAt: admin.firestore.FieldValue.serverTimestamp(), // Opcional: añadir timestamp de actualización
+    };
+
+    await db.collection('portfolioItems').doc(id).update(updatedItem);
+
+    res.status(200).json({ message: 'Documento actualizado con éxito.' });
   } catch (error) {
-    console.error("Error de autenticación o al leer documentos de Firestore:", error);
+    console.error("Error de autenticación o al actualizar documento:", error);
     if (error.code === 'auth/argument-error' || error.code === 'auth/invalid-id-token') {
         return res.status(401).json({ message: 'Token de autenticación inválido o expirado.' });
     }

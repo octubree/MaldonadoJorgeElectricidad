@@ -17,7 +17,7 @@
       padding: 20px;
     }
     .container-admin {
-      max-width: 900px; /* Aumentado para la galería */
+      max-width: 1200px; /* Aumentado para la galería de columnas */
       margin: 50px auto;
       background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
       padding: 30px;
@@ -91,35 +91,66 @@
     #portfolioFormContainer, #portfolioListContainer {
         display: none; /* Oculto por defecto hasta que el usuario inicie sesión */
     }
-    .portfolio-item-admin {
-        display: flex;
-        align-items: center;
+    .portfolio-item-admin-card {
         background: rgba(255, 255, 255, 0.1);
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Asegura que las tarjetas tengan la misma altura */
     }
-    .portfolio-item-admin img {
-        width: 80px;
-        height: 80px;
+    .portfolio-item-admin-card img {
+        width: 100%;
+        height: 180px; /* Altura fija para las imágenes */
         object-fit: cover;
-        margin-right: 15px;
+        margin-bottom: 15px;
         border-radius: 4px;
     }
-    .portfolio-item-admin div {
+    .portfolio-item-admin-card .card-content {
         flex-grow: 1;
     }
-    .portfolio-item-admin button {
-        margin-left: 15px;
+    .portfolio-item-admin-card .card-actions {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .portfolio-item-admin-card button {
+        flex-grow: 1;
         padding: 8px 12px;
-        background-color: #dc3545;
         border: none;
         border-radius: 4px;
         color: white;
         cursor: pointer;
+        font-size: 14px;
     }
-    .portfolio-item-admin button:hover {
+    .portfolio-item-admin-card .delete-btn {
+        background-color: #dc3545;
+    }
+    .portfolio-item-admin-card .delete-btn:hover {
         background-color: #c82333;
+    }
+    .portfolio-item-admin-card .save-btn {
+        background-color: #18d26e;
+    }
+    .portfolio-item-admin-card .save-btn:hover {
+        background-color: #15bb62;
+    }
+    .portfolio-item-admin-card .cancel-btn {
+        background-color: #6c757d;
+    }
+    .portfolio-item-admin-card .cancel-btn:hover {
+        background-color: #5a6268;
+    }
+    .portfolio-item-admin-card input[type="text"],
+    .portfolio-item-admin-card select {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        margin-bottom: 5px;
+        padding: 5px;
+        border-radius: 3px;
     }
   </style>
 </head>
@@ -164,7 +195,7 @@
 
     <div id="portfolioListContainer">
         <h2>Fotos Existentes</h2>
-        <div id="portfolioItemsList">
+        <div id="portfolioItemsList" class="row">
             <!-- Las fotos se cargarán aquí -->
         </div>
         <p id="listStatus"></p>
@@ -236,27 +267,54 @@
                     listStatus.innerText = '';
                     items.forEach(item => {
                         const categoryDisplayName = categoryNames[item.category] || item.category;
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = 'portfolio-item-admin';
-                        itemDiv.innerHTML = `
-                            <img src="${item.imageUrl}" alt="${item.altText}">
-                            <div>
-                                <strong>${item.altText}</strong><br>
-                                <small>Categoría: ${categoryDisplayName}</small><br>
-                                <small>ID: ${item.id}</small>
+                        const itemCol = document.createElement('div');
+                        itemCol.className = 'col-lg-3 col-md-4 col-sm-6 col-12'; // Clases de columna de Bootstrap
+                        itemCol.innerHTML = `
+                            <div class="portfolio-item-admin-card">
+                                <img src="${item.imageUrl}" alt="${item.altText}">
+                                <div class="card-content">
+                                    <div class="form-group">
+                                        <label for="altText-${item.id}">Texto alternativo:</label>
+                                        <input type="text" class="form-control" id="altText-${item.id}" value="${item.altText}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category-${item.id}">Categoría:</label>
+                                        <select class="form-control" id="category-${item.id}">
+                                            ${Object.entries(categoryNames).map(([value, display]) => 
+                                                `<option value="${value}" ${item.category === value ? 'selected' : ''}>${display}</option>`
+                                            ).join('')}
+                                        </select>
+                                    </div>
+                                    <small>ID: ${item.id}</small>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="save-btn" data-id="${item.id}">Guardar Cambios</button>
+                                    <button class="delete-btn" data-id="${item.id}">Eliminar</button>
+                                </div>
                             </div>
-                            <button data-id="${item.id}">Eliminar</button>
                         `;
-                        portfolioItemsList.appendChild(itemDiv);
+                        portfolioItemsList.appendChild(itemCol);
                     });
 
                     // Añadir event listeners a los botones de eliminar
-                    portfolioItemsList.querySelectorAll('button').forEach(button => {
+                    portfolioItemsList.querySelectorAll('.delete-btn').forEach(button => {
                         button.addEventListener('click', async (e) => {
                             const itemId = e.target.dataset.id;
                             if (confirm(`¿Estás seguro de que quieres eliminar esta foto? (ID: ${itemId})`)) {
                                 await deletePortfolioItem(itemId);
                             }
+                        });
+                    });
+
+                    // Añadir event listeners a los botones de guardar
+                    portfolioItemsList.querySelectorAll('.save-btn').forEach(button => {
+                        button.addEventListener('click', async (e) => {
+                            const itemId = e.target.dataset.id;
+                            const imageUrl = e.target.closest('.portfolio-item-admin-card').querySelector('img').src; // La URL de la imagen no es editable en este formulario
+                            const newAltText = e.target.closest('.portfolio-item-admin-card').querySelector(`input[id="altText-${itemId}"]`).value;
+                            const newCategory = e.target.closest('.portfolio-item-admin-card').querySelector(`select[id="category-${itemId}"]`).value;
+                            
+                            await updatePortfolioItem(itemId, imageUrl, newCategory, newAltText);
                         });
                     });
                 }
@@ -299,6 +357,39 @@
         } catch (error) {
             console.error('Error al eliminar la foto:', error);
             alert('Error de red o servidor al eliminar la foto.');
+        }
+    }
+
+    // Función para actualizar un elemento del portfolio
+    async function updatePortfolioItem(itemId, imageUrl, category, altText) {
+        try {
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Debes iniciar sesión para actualizar imágenes.');
+                return;
+            }
+            const idToken = await user.getIdToken();
+
+            const res = await fetch('/api/update-portfolio-item', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${idToken}`
+                },
+                body: JSON.stringify({ id: itemId, imageUrl, category, altText })
+            });
+
+            const result = await res.json();
+
+            if (res.ok) {
+                alert('Foto actualizada con éxito.');
+                loadPortfolioItems(); // Recargar la lista
+            } else {
+                alert('Error al actualizar la foto: ' + (result.message || 'desconocido'));
+            }
+        } catch (error) {
+            console.error('Error al actualizar la foto:', error);
+            alert('Error de red o servidor al actualizar la foto.');
         }
     }
 
