@@ -3,72 +3,239 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Subir nueva imagen al portfolio</title>
+  <title>Administración de Portfolio - Jorge Electricidad</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Main CSS -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #040404; /* Fondo oscuro como tu sitio principal */
+      color: #fff;
+      padding: 20px;
+    }
+    .container-admin {
+      max-width: 600px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); /* Sombra verde para destacar */
+    }
+    h1 {
+      color: #18d26e; /* Color verde de tu sitio */
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="url"],
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
+      background-color: #1a1a1a;
+      color: #fff;
+      border-radius: 4px;
+    }
+    button[type="submit"] {
+      background-color: #18d26e; /* Color verde de tu sitio */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    button[type="submit"]:hover {
+      background-color: #15bb62;
+    }
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    #auth-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    #auth-container button {
+        background-color: #4285F4; /* Google Blue */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    #auth-container button:hover {
+        background-color: #357ae8;
+    }
+    #auth-container #signOutButton {
+        background-color: #dc3545; /* Red for sign out */
+    }
+    #auth-container #signOutButton:hover {
+        background-color: #c82333;
+    }
+    #portfolioFormContainer {
+        display: none; /* Oculto por defecto hasta que el usuario inicie sesión */
+    }
+  </style>
 </head>
 <body>
-  <h1>Agregar foto al portfolio</h1>
+  <div class="container-admin">
+    <h1>Administración de Portfolio</h1>
 
-  <form id="portfolioForm">
-    <label>
-      URL de la imagen:
-      <input type="url" name="imageUrl" required />
-    </label><br/><br/>
+    <div id="auth-container">
+      <p id="authStatus">Por favor, inicia sesión para administrar el portfolio.</p>
+      <button id="signInButton">Iniciar Sesión con Google</button>
+      <button id="signOutButton" style="display:none;">Cerrar Sesión</button>
+    </div>
 
-    <label>
-      Categoría:
-      <select name="category" required>
-        <option value="filter-luminarias">Luminarias</option>
-        <option value="filter-afines">Afines</option>
-        <option value="filter-firma-ute">Firma UTE</option>
-        <option value="filter-camaras-seguridad">Cámaras de Seguridad</option>
-      </select>
-    </label><br/><br/>
+    <div id="portfolioFormContainer">
+      <h2>Agregar foto al portfolio</h2>
+      <form id="portfolioForm">
+        <div class="form-group">
+          <label for="imageUrl">URL de la imagen:</label>
+          <input type="url" class="form-control" id="imageUrl" name="imageUrl" required />
+        </div>
 
-    <label>
-      Texto alternativo:
-      <input type="text" name="altText" required />
-    </label><br/><br/>
+        <div class="form-group">
+          <label for="category">Categoría:</label>
+          <select class="form-control" id="category" name="category" required>
+            <option value="filter-luminarias">Luminarias</option>
+            <option value="filter-afines">Afines</option>
+            <option value="filter-firma-ute">Firma UTE</option>
+            <option value="filter-camaras-seguridad">Cámaras de Seguridad</option>
+          </select>
+        </div>
 
-    <button type="submit">Subir</button>
-  </form>
+        <div class="form-group">
+          <label for="altText">Texto alternativo:</label>
+          <input type="text" class="form-control" id="altText" name="altText" required />
+        </div>
 
-  <p id="status"></p>
+        <button type="submit" class="btn btn-primary">Subir</button>
+      </form>
+
+      <p id="status"></p>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const portfolioForm = document.getElementById('portfolioForm');
-      const statusParagraph = document.getElementById('status');
+    // Tu configuración de Firebase (reemplaza con tus propias credenciales)
+    const firebaseConfig = {
+    apiKey: "AIzaSyAAuRZuaNKJNmIsWj8xnnMtlNe-QXsw2hM",
+    authDomain: "festive-centaur-240001.firebaseapp.com",
+    databaseURL: "https://festive-centaur-240001.firebaseio.com",
+    projectId: "festive-centaur-240001",
+    storageBucket: "festive-centaur-240001.firebasestorage.app",
+    messagingSenderId: "196090520802",
+    appId: "1:196090520802:web:5db4ec18a826b05b"
+  };
 
-      portfolioForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
 
-        const form = e.target;
-        const data = {
-          imageUrl: form.imageUrl.value,
-          category: form.category.value,
-          altText: form.altText.value,
-        };
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-        try {
-          const res = await fetch('/api/add-portfolio-item', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
+    const authStatus = document.getElementById('authStatus');
+    const signInButton = document.getElementById('signInButton');
+    const signOutButton = document.getElementById('signOutButton');
+    const portfolioFormContainer = document.getElementById('portfolioFormContainer');
+    const portfolioForm = document.getElementById('portfolioForm');
+    const statusParagraph = document.getElementById('status');
 
-          const result = await res.json();
+    // Manejar el estado de autenticación
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        authStatus.innerText = `Sesión iniciada como: ${user.displayName} (${user.email})`;
+        signInButton.style.display = 'none';
+        signOutButton.style.display = 'inline-block';
+        portfolioFormContainer.style.display = 'block';
+      } else {
+        authStatus.innerText = 'Por favor, inicia sesión para administrar el portfolio.';
+        signInButton.style.display = 'inline-block';
+        signOutButton.style.display = 'none';
+        portfolioFormContainer.style.display = 'none';
+      }
+    });
 
-          if (res.ok) {
-            statusParagraph.innerText = '✅ Imagen agregada con éxito';
-            form.reset();
-          } else {
-            statusParagraph.innerText = '❌ Error: ' + (result.message || 'no se pudo subir');
-          }
-        } catch (err) {
-          statusParagraph.innerText = '❌ Error de red o servidor';
-          console.error(err);
+    // Evento para iniciar sesión
+    signInButton.addEventListener('click', () => {
+      auth.signInWithPopup(provider)
+        .catch(error => {
+          console.error("Error al iniciar sesión:", error);
+          authStatus.innerText = 'Error al iniciar sesión.';
+        });
+    });
+
+    // Evento para cerrar sesión
+    signOutButton.addEventListener('click', () => {
+      auth.signOut()
+        .catch(error => {
+          console.error("Error al cerrar sesión:", error);
+          authStatus.innerText = 'Error al cerrar sesión.';
+        });
+    });
+
+    // Lógica de envío del formulario (modificada para incluir token de autenticación)
+    portfolioForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const user = auth.currentUser;
+      if (!user) {
+        statusParagraph.innerText = '❌ Debes iniciar sesión para subir imágenes.';
+        return;
+      }
+
+      const form = e.target;
+      const data = {
+        imageUrl: form.imageUrl.value,
+        category: form.category.value,
+        altText: form.altText.value,
+      };
+
+      try {
+        const idToken = await user.getIdToken();
+        
+        const res = await fetch('/api/add-portfolio-item', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${idToken}` // Enviar el token de autenticación
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          statusParagraph.innerText = '✅ Imagen agregada con éxito';
+          form.reset();
+        } else {
+          statusParagraph.innerText = '❌ Error: ' + (result.message || 'no se pudo subir');
         }
-      });
+      } catch (err) {
+        statusParagraph.innerText = '❌ Error de red o servidor';
+        console.error(err);
+      }
     });
   </script>
 </body>
