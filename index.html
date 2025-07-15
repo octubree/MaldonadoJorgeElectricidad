@@ -991,12 +991,14 @@
 
         // --- ENVÍO DEL FORMULARIO ---
         if (isValid) {
-          // Si todo es válido, se procede con el envío original del script 'validate.js'
-          // Para ello, llamamos a la función global que existía, pero adaptada.
-          // Como el script original no es un módulo, simulamos su comportamiento.
           const thisForm = this;
           const action = thisForm.getAttribute('action');
+          
+          // Convertir FormData a un objeto JSON
           const formData = new FormData(thisForm);
+          const formObject = Object.fromEntries(formData.entries());
+          // Asegurarse de que las preferencias de contacto se envíen como un array
+          formObject.contact_preference = formData.getAll('contact_preference');
 
           thisForm.querySelector('.loading').classList.add('d-block');
           thisForm.querySelector('.error-message').classList.remove('d-block');
@@ -1004,19 +1006,24 @@
 
           fetch(action, {
             method: 'POST',
-            body: formData,
-            headers: {'X-Requested-With': 'XMLHttpRequest'}
+            body: JSON.stringify(formObject), // Enviar el objeto como un string JSON
+            headers: {
+              'Content-Type': 'application/json', // Especificar el tipo de contenido
+              'X-Requested-With': 'XMLHttpRequest'
+            }
           })
           .then(response => {
             if (response.ok) return response.text();
-            throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+            // Si hay un error, intenta leer el mensaje de error del servidor
+            return response.text().then(text => { 
+              throw new Error(text || `Error del servidor: ${response.status}`); 
+            });
           })
           .then(data => {
             thisForm.querySelector('.loading').classList.remove('d-block');
             if (data.trim().toLowerCase() === 'ok') {
               thisForm.querySelector('.sent-message').classList.add('d-block');
               thisForm.reset();
-              // Ocultar campos de contacto de nuevo
               whatsappGroup.style.display = 'none';
               emailGroup.style.display = 'none';
             } else {
