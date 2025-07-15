@@ -20,7 +20,30 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { name, subject, message, contact_preference, whatsapp_country, whatsapp_number, email } = req.body;
+    // --- Parsear manualmente el body de la solicitud ---
+    const body = await new Promise((resolve, reject) => {
+      let data = '';
+      req.on('data', chunk => {
+        data += chunk;
+      });
+      req.on('end', () => {
+        try {
+          // Si no hay datos, resuelve un objeto vacío
+          if (data) {
+            resolve(JSON.parse(data));
+          } else {
+            resolve({});
+          }
+        } catch (error) {
+          reject(new Error('Cuerpo JSON inválido'));
+        }
+      });
+      req.on('error', error => {
+        reject(error);
+      });
+    });
+
+    const { name, subject, message, contact_preference, whatsapp_country, whatsapp_number, email } = body;
 
     // --- Construcción del cuerpo del email en HTML para mejor formato ---
     let emailBody = `
