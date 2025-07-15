@@ -1,0 +1,64 @@
+Sí, eso confirma el problema claramente:
+
+---
+
+### ❌ **Error exacto:**
+
+```
+Cannot find module 'resend'
+```
+
+👉 **Significa que Vercel no encuentra el paquete `resend`** porque **no está instalado en tu proyecto**.
+
+---
+
+### ✅ ¿Cómo lo solucionás?
+
+Tenés que **instalar el módulo `resend`** en tu proyecto local (o directamente desde el editor de Vercel si usás GitHub o Vercel CLI).
+
+---
+
+### 🔧 PASOS (modo local o con GitHub):
+
+1. **Abrí tu terminal en la raíz del proyecto**
+
+2. Ejecutá:
+
+   ```bash
+   npm install resend
+   ```
+
+   o si usás `pnpm`:
+
+   ```bash
+   pnpm add resend
+   ```
+
+3. Confirmá que en tu `package.json` aparezca algo como:
+
+   ```json
+   "dependencies": {
+     "resend": "^1.x.x"
+   }
+   ```
+
+4. Subí los cambios a GitHub (si usás Vercel conectado con Git), o desplegá de nuevo manualmente si estás trabajando en local.
+
+---
+
+### 📦 Si usás el editor web de Vercel:
+
+* No podés instalar paquetes directamente ahí.
+* Necesitás subir el proyecto desde una carpeta con `package.json` y el módulo instalado vía Git.
+
+---
+
+### Extra: si usás otras bibliotecas como `nodemailer`, el proceso sería similar:
+
+```bash
+npm install nodemailer
+```
+
+---
+
+¿Querés que te prepare un `package.json` básico con `resend` y te diga cómo cargarlo a Vercel correctamente desde cero?
