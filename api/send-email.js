@@ -20,8 +20,17 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Vercel parsea automáticamente el body cuando el Content-Type es application/json
-    const { name, subject, message, contact_preference, whatsapp_country, whatsapp_number, email } = req.body;
+    // Parsear manualmente si viene como x-www-form-urlencoded (formulario HTML tradicional)
+    const body = await new Promise((resolve, reject) => {
+      let raw = '';
+      req.on('data', chunk => raw += chunk);
+      req.on('end', () => {
+        resolve(Object.fromEntries(new URLSearchParams(raw)));
+      });
+      req.on('error', reject);
+    });
+
+    const { name, subject, message, contact_preference, whatsapp_country, whatsapp_number, email } = body;
 
     // --- Construcción del cuerpo del email en HTML para mejor formato ---
     let emailBody = `
