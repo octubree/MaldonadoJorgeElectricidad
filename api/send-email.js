@@ -58,7 +58,7 @@ module.exports = async (req, res) => {
     emailBody += `<h3>Asunto: ${subject || 'Sin asunto'}</h3>`;
     emailBody += `<div><strong>Mensaje:</strong></div>`;
     emailBody += `<div style="padding: 10px; border: 1px solid #eee; border-radius: 5px; background-color: #f9f9f9;">
-      <p style="margin: 0;">${message.replace(/\n/g, '<br>') || 'No hay mensaje.'}</p>
+      <p style="margin: 0;">${(message || 'No hay mensaje.').replace(/\n/g, '<br>')}</p>
     </div>`;
 
     // --- Envío del correo con Resend ---
