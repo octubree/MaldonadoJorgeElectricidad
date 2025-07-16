@@ -1013,21 +1013,25 @@
             }
           })
           .then(response => {
-            if (response.ok) return response.text();
-            // Si hay un error, intenta leer el mensaje de error del servidor
-            return response.text().then(text => { 
-              throw new Error(text || `Error del servidor: ${response.status}`); 
+            // Siempre intentar parsear la respuesta como JSON
+            return response.json().then(data => {
+              if (!response.ok) {
+                // Si la respuesta no es OK (ej: 400, 500), lanzar un error con el mensaje del servidor
+                throw new Error(data.error || `Error del servidor: ${response.status}`);
+              }
+              return data; // Si es OK, pasar los datos al siguiente .then()
             });
           })
           .then(data => {
             thisForm.querySelector('.loading').classList.remove('d-block');
-            if (data.trim().toLowerCase() === 'ok') {
+            if (data.success) {
               thisForm.querySelector('.sent-message').classList.add('d-block');
               thisForm.reset();
               whatsappGroup.style.display = 'none';
               emailGroup.style.display = 'none';
             } else {
-              throw new Error(data || 'El servidor devolvió una respuesta inesperada.');
+              // Este 'else' es por si el servidor responde con 200 pero success: false
+              throw new Error(data.error || 'El servidor indicó un fallo inesperado.');
             }
           })
           .catch(error => {

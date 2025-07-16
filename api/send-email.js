@@ -16,34 +16,12 @@ module.exports = async (req, res) => {
   // Verificar que Resend esté configurado
   if (!resend || !toEmail) {
     console.error('Error: Variables de entorno RESEND_API_KEY o TO_EMAIL no están configuradas.');
-    return res.status(500).send('Error de configuración del servidor.');
+    return res.status(500).json({ success: false, error: 'Error de configuración del servidor.' });
   }
 
   try {
-    // --- Parsear manualmente el body de la solicitud ---
-    const body = await new Promise((resolve, reject) => {
-      let data = '';
-      req.on('data', chunk => {
-        data += chunk;
-      });
-      req.on('end', () => {
-        try {
-          // Si no hay datos, resuelve un objeto vacío
-          if (data) {
-            resolve(JSON.parse(data));
-          } else {
-            resolve({});
-          }
-        } catch (error) {
-          reject(new Error('Cuerpo JSON inválido'));
-        }
-      });
-      req.on('error', error => {
-        reject(error);
-      });
-    });
-
-    const { name, subject, message, contact_preference, whatsapp_country, whatsapp_number, email } = body;
+    // Vercel parsea automáticamente el body cuando el Content-Type es application/json
+    const { name, subject, message, contact_preference, whatsapp_country, whatsapp_number, email } = req.body;
 
     // --- Construcción del cuerpo del email en HTML para mejor formato ---
     let emailBody = `
@@ -84,15 +62,14 @@ module.exports = async (req, res) => {
 
     if (error) {
       console.error('Error al enviar el email:', error);
-      // Devuelve un mensaje de error más específico si es posible
-      return res.status(400).send(error.message || 'Error al enviar el mensaje.');
+      return res.status(400).json({ success: false, error: error.message || 'Error al enviar el mensaje.' });
     }
 
-    // Si todo fue bien, devuelve 'OK'
-    return res.status(200).send('OK');
+    // Si todo fue bien, devuelve una respuesta JSON de éxito
+    return res.status(200).json({ success: true });
 
   } catch (error) {
     console.error('Error inesperado en el servidor:', error);
-    return res.status(500).send('Ocurrió un error inesperado.');
+    return res.status(500).json({ success: false, error: 'Ocurrió un error inesperado.' });
   }
 };
