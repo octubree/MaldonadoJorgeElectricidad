@@ -744,7 +744,7 @@
           font-weight: bold;
         }
       </style>
-      <form action="/api/send-email" method="post" role="form" class="mt-4">
+      <form action="/api/send-email" method="post" role="form" id="miFormularioDeContacto" class="mt-4">
         <div class="row">
           <div class="col-md-12 form-group">
             <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre">
@@ -794,9 +794,9 @@
         </div>
 
         <div class="my-3">
-          <div class="loading">Cargando</div>
-          <div class="error-message"></div> <!-- Mensaje de error genérico del servidor -->
-          <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
+          <div class="loading" style="display: none;">Cargando</div>
+          <div class="error-message" style="display: none;"></div>
+          <div class="sent-message" style="display: none;">Tu mensaje ha sido enviado. ¡Gracias!</div>
         </div>
 
         <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
@@ -904,7 +904,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // --- ELEMENTOS DEL DOM ---
-      const contactForm = document.querySelector('.php-email-form');
+      const contactForm = document.getElementById('miFormularioDeContacto');
       const contactWhatsapp = document.getElementById('contact_whatsapp');
       const contactEmail = document.getElementById('contact_email');
       const whatsappGroup = document.getElementById('whatsapp-group');
