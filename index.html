@@ -1006,11 +1006,7 @@
 
           fetch(action, {
             method: 'POST',
-            body: JSON.stringify(formObject), // Enviar el objeto como un string JSON
-            headers: {
-              'Content-Type': 'application/json', // Especificar el tipo de contenido
-              'X-Requested-With': 'XMLHttpRequest'
-            }
+            body: new URLSearchParams(formData) // Enviar como datos de formulario
           })
           .then(response => {
             // Siempre intentar parsear la respuesta como JSON
