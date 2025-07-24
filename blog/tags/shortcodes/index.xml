@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shortcodes on Electricidad para todos</title>
-    <link>https://web-pruebas.vercel.app/tags/shortcodes/</link>
+    <link>https://www.jorge-electricidad.net/blog/tags/shortcodes/</link>
     <description>Recent content in Shortcodes on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
     <lastBuildDate>Thu, 30 Nov 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://web-pruebas.vercel.app/tags/shortcodes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.jorge-electricidad.net/blog/tags/shortcodes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Hugo Shortcodes</title>
-      <link>https://web-pruebas.vercel.app/post/2020/understanding-hugo-shortcodes/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/understanding-hugo-shortcodes/</link>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/understanding-hugo-shortcodes/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/understanding-hugo-shortcodes/</guid>
       <description>&lt;p&gt;Hugo shortcodes are powerful tools for adding custom HTML or other special content within Markdown files without complex code. They enable enhanced flexibility and are a core part of Hugo&amp;rsquo;s functionality, offering reusable snippets for embedding media, custom components, or dynamic content. Below, we’ll explore what shortcodes are and highlight some popular examples.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lightbi Custom Shortcodes</title>
-      <link>https://web-pruebas.vercel.app/post/2020/custom-shortcodes/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/custom-shortcodes/</link>
       <pubDate>Fri, 24 Nov 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/custom-shortcodes/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/custom-shortcodes/</guid>
       <description>&lt;p&gt;To create your own shortcodes in Hugo, add an HTML file in layouts/shortcodes/. This theme provides the following useful custom shortcodes:&lt;/p&gt;</description>
     </item>
   </channel>

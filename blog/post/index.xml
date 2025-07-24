@@ -2,96 +2,96 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Electricidad para todos</title>
-    <link>https://web-pruebas.vercel.app/post/</link>
+    <link>https://www.jorge-electricidad.net/blog/post/</link>
     <description>Recent content on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
     <lastBuildDate>Sat, 17 May 2025 01:23:16 -0300</lastBuildDate>
-    <atom:link href="https://web-pruebas.vercel.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.jorge-electricidad.net/blog/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Domótica en Maldonado: ¿Vale la pena invertir?</title>
-      <link>https://web-pruebas.vercel.app/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</link>
       <pubDate>Sat, 17 May 2025 01:23:16 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</guid>
       <description>&lt;h2 id=&#34;resumen&#34;&gt;Resumen&lt;/h2&gt;&#xA;&lt;p&gt;La tecnología para el hogar ya no es cosa del futuro. En Maldonado, cada vez más personas están optando por sistemas de &lt;strong&gt;domótica&lt;/strong&gt; que permiten automatizar funciones como la iluminación, la climatización, la seguridad y hasta el riego del jardín. Pero, ¿realmente vale la pena invertir en domótica? Vamos a verlo.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Install Hugo in Windows</title>
-      <link>https://web-pruebas.vercel.app/post/2020/install-hugo/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/install-hugo/</link>
       <pubDate>Sun, 31 Dec 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/install-hugo/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/install-hugo/</guid>
       <description>&lt;p&gt;Hugo comes in three versions: Standard, Extended, and Extended/Deploy. The Standard edition covers core functionalities, while Extended adds advanced options, with Extended/Deploy** offering further deployment features.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to use Lightbi theme ?</title>
-      <link>https://web-pruebas.vercel.app/post/2020/use-this-theme/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/use-this-theme/</link>
       <pubDate>Tue, 26 Dec 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/use-this-theme/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/use-this-theme/</guid>
       <description>&lt;p&gt;In this post, we&amp;rsquo;ll cover how to install Hugo and set up your first website with the Lightbi theme. For detailed steps, refer to &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;Hugo’s quick-start guide&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Features of Lightbi</title>
-      <link>https://web-pruebas.vercel.app/post/2020/features-of-lightbi/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/features-of-lightbi/</link>
       <pubDate>Wed, 20 Dec 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/features-of-lightbi/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/features-of-lightbi/</guid>
       <description>&lt;h3 id=&#34;general&#34;&gt;General&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Three Main Content Sections:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Blog&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Notes&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Collections&lt;/strong&gt; (Newsletter)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Responsive Design&lt;/strong&gt;:&lt;/p&gt;</description>
     </item>
     <item>
       <title>More about Lightbi</title>
-      <link>https://web-pruebas.vercel.app/post/2020/more-about-lightbi/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/more-about-lightbi/</link>
       <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/more-about-lightbi/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/more-about-lightbi/</guid>
       <description>&lt;h2 id=&#34;wiki&#34;&gt;Wiki&lt;/h2&gt;&#xA;&lt;p&gt;Checkout the &lt;a href=&#34;https://github.com/binokochumolvarghese/lightbi-hugo/wiki&#34;&gt;wiki&lt;/a&gt; page for detailed documentation of the theme features.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding Hugo Shortcodes</title>
-      <link>https://web-pruebas.vercel.app/post/2020/understanding-hugo-shortcodes/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/understanding-hugo-shortcodes/</link>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/understanding-hugo-shortcodes/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/understanding-hugo-shortcodes/</guid>
       <description>&lt;p&gt;Hugo shortcodes are powerful tools for adding custom HTML or other special content within Markdown files without complex code. They enable enhanced flexibility and are a core part of Hugo&amp;rsquo;s functionality, offering reusable snippets for embedding media, custom components, or dynamic content. Below, we’ll explore what shortcodes are and highlight some popular examples.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lightbi Custom Shortcodes</title>
-      <link>https://web-pruebas.vercel.app/post/2020/custom-shortcodes/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/custom-shortcodes/</link>
       <pubDate>Fri, 24 Nov 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/custom-shortcodes/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/custom-shortcodes/</guid>
       <description>&lt;p&gt;To create your own shortcodes in Hugo, add an HTML file in layouts/shortcodes/. This theme provides the following useful custom shortcodes:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Image Gallery Shortcode</title>
-      <link>https://web-pruebas.vercel.app/post/2020/image-gallery/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/image-gallery/</link>
       <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/image-gallery/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/image-gallery/</guid>
       <description>&lt;div class=&#34;card alert alert-primary&#34;&gt;&#xD;&#xA;        &#xD;&#xA;        &lt;h5 class=&#34;card-title m-0&#34;&gt;&#xD;&#xA;            Experimental feature&#xD;&#xA;        &lt;/h5&gt;&#xD;&#xA;        &#xD;&#xA;&#xD;&#xA;        &lt;p class=&#34;card-text text-muted fs-6 mt-0&#34;&gt;  &#xD;&#xA;             &#xD;&#xA;            This feature is currently in experimental mode, so breaking changes may occur. Please use it carefully.&#xD;&#xA;            &#xD;&#xA;        &lt;/p&gt;</description>
     </item>
     <item>
       <title>Hosting Your Hugo Site on Netlify</title>
-      <link>https://web-pruebas.vercel.app/post/2020/netlify-configuration/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/netlify-configuration/</link>
       <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/netlify-configuration/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/netlify-configuration/</guid>
       <description>&lt;p&gt;Hosting a Hugo site on Netlify is an effective solution for deploying static websites, combining Hugo’s speed with Netlify’s robust features like continuous deployment, a user-friendly dashboard, and advanced build settings.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Parameters in Lightbi</title>
-      <link>https://web-pruebas.vercel.app/post/2020/parameters/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/parameters/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/parameters/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/parameters/</guid>
       <description>&lt;p&gt;Below is a list of configurable parameters in the Lightbi theme, along with descriptions to help you customize your site effectively. You can be adjust the below parameters in your &lt;code&gt;hugo.toml&lt;/code&gt; file.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is Markdown ?</title>
-      <link>https://web-pruebas.vercel.app/post/2020/markdown/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/markdown/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/markdown/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/markdown/</guid>
       <description>&lt;h3 id=&#34;what-is-markdown&#34;&gt;What is Markdown?&lt;/h3&gt;&#xA;&lt;p&gt;Markdown is a lightweight, plain-text formatting language used for creating styled text through simple, readable syntax. Developed by John Gruber in 2004, its goal is to allow writers to format documents without complex code, making it easy to read and edit. The beauty of Markdown lies in its simplicity, allowing creators to add headings, lists, images, links, and more by typing a few symbols around their text.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Markdown Syntax Guide</title>
-      <link>https://web-pruebas.vercel.app/post/2020/syntax/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/syntax/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/post/2020/syntax/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/syntax/</guid>
       <description>&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;&#xA;&lt;p&gt;To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three (h3), use three number signs (e.g., ### My Header).&#xA; &lt;/p&gt;</description>
     </item>
   </channel>

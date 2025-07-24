@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Collections on Electricidad para todos</title>
-    <link>https://web-pruebas.vercel.app/collections/</link>
+    <link>https://www.jorge-electricidad.net/blog/collections/</link>
     <description>Recent content in Collections on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
     <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://web-pruebas.vercel.app/collections/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.jorge-electricidad.net/blog/collections/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collections No.1</title>
-      <link>https://web-pruebas.vercel.app/collections/2023/collections/</link>
+      <link>https://www.jorge-electricidad.net/blog/collections/2023/collections/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/collections/2023/collections/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/collections/2023/collections/</guid>
       <description>&lt;p&gt;Articles about learn in public, brag document and free stuffs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Collections No.2</title>
-      <link>https://web-pruebas.vercel.app/collections/2023/collections2/</link>
+      <link>https://www.jorge-electricidad.net/blog/collections/2023/collections2/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/collections/2023/collections2/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/collections/2023/collections2/</guid>
       <description>&lt;p&gt;Articles about learn in public, brag document and free stuffs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Collections No.3</title>
-      <link>https://web-pruebas.vercel.app/collections/2023/collections3/</link>
+      <link>https://www.jorge-electricidad.net/blog/collections/2023/collections3/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/collections/2023/collections3/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/collections/2023/collections3/</guid>
       <description>&lt;p&gt;Articles about learn in public, brag document and free stuffs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Collections No.4</title>
-      <link>https://web-pruebas.vercel.app/collections/2023/collections4/</link>
+      <link>https://www.jorge-electricidad.net/blog/collections/2023/collections4/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/collections/2023/collections4/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/collections/2023/collections4/</guid>
       <description>&lt;p&gt;Articles about learn in public, brag document and free stuffs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Collections No.5</title>
-      <link>https://web-pruebas.vercel.app/collections/2023/collections5/</link>
+      <link>https://www.jorge-electricidad.net/blog/collections/2023/collections5/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/collections/2023/collections5/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/collections/2023/collections5/</guid>
       <description>&lt;p&gt;Articles about learn in public, brag document and free stuffs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Collections No.6</title>
-      <link>https://web-pruebas.vercel.app/collections/2023/collections6/</link>
+      <link>https://www.jorge-electricidad.net/blog/collections/2023/collections6/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://web-pruebas.vercel.app/collections/2023/collections6/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/collections/2023/collections6/</guid>
       <description>&lt;p&gt;Articles about learn in public, brag document and free stuffs.&lt;/p&gt;</description>
     </item>
   </channel>
