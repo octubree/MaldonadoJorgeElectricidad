@@ -34,9 +34,9 @@ module.exports = async (req, res) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     // Opcional: Verificar si el usuario es el administrador permitido
-    // if (decodedToken.email !== 'tu_email_de_administrador@example.com') {
-    //   return res.status(403).json({ message: 'Acceso denegado: No tienes permisos de administrador.' });
-    // }
+    if (decodedToken.email !== 'sixtamux@gmail.com') {
+      return res.status(403).json({ message: 'Acceso denegado: No tienes permisos de administrador.' });
+    }
 
     const { id, imageUrl, category, altText } = req.body;
 

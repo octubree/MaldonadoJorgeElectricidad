@@ -29,9 +29,9 @@ module.exports = async (req, res) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     // Opcional: Verificar si el usuario es el administrador permitido
-    // if (decodedToken.email !== 'tu_email_de_administrador@example.com') {
-    //   return res.status(403).json({ message: 'Acceso denegado: No tienes permisos de administrador.' });
-    // }
+    if (decodedToken.email !== 'sixtamux@gmail.com') {
+      return res.status(403).json({ message: 'Acceso denegado: No tienes permisos de administrador.' });
+    }
 
     const portfolioItemsRef = db.collection('portfolioItems');
     const snapshot = await portfolioItemsRef.orderBy('timestamp', 'desc').get();
