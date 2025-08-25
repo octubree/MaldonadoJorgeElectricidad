@@ -10,33 +10,35 @@
 # General
 --------------------------------------------------------------*/
 
-/* BANNER EFECTO  */
-
+/* BANNER EFECTO MARQUESINA */
 .banner {
-  height: 20px;
   background-color: yellow;
-  width: 100%; /* Ajusta el ancho según tu página */
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999; /* Asegura que esté por encima de todo */
   overflow: hidden;
+  padding: 5px 0;
+  height: auto;
 }
 
 .banner p {
+  margin: 0;
   color: black;
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
-  position: absolute;
-  top: 50%;
-  left: 100%; /* Posición inicial fuera del banner */
-  transform: translateY(-50%);
+  white-space: nowrap; /* Evita que el texto se rompa */
+  display: inline-block; /* Permite que la animación funcione correctamente */
+  padding-left: 100%; /* Inicia el texto fuera de la pantalla */
+  animation: marquee 15s linear infinite;
 }
 
-
-/* TERMINA BANNER EFECTO  */
+/* Animación para el desplazamiento */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 
 
 
@@ -97,6 +99,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 30px; /* Añadido para bajarlo debajo del banner */
 }
 /* TERMINA TEXTO NUMERO  */
 
