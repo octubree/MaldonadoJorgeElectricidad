@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><em>${testimonial.text}</em></p>
                 <p>
                   <ul>
-                    <li>Opiniòn En Google Negocio <a href="${testimonial.googleReviewLink}" style="color:yellow; font-weight: bold;">(ver)</a></li>
+                    <li>Opiniòn En Google Negocio <a href="${testimonial.googleReviewLink}" target="_blank" rel="noopener noreferrer" style="color:yellow; font-weight: bold;">(ver)</a></li>
                   </ul>
                 </p>
               </div>
