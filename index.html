@@ -83,78 +83,28 @@
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
   </noscript>
 
-  <link rel="preload" href="assets/css/style.css" as="style" onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="assets/css/style.css">
-  </noscript>
+  <link rel="preload" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css"></noscript>
 
-  <!-- Enlaces CSS existentes -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="preload" href="assets/vendor/boxicons/css/boxicons.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/vendor/boxicons/css/boxicons.min.css"></noscript>
 
-  <!-- TERMINA PRELOAD -->
+  <link rel="preload" href="assets/vendor/glightbox/css/glightbox.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/vendor/glightbox/css/glightbox.min.css"></noscript>
 
+  <link rel="preload" href="assets/vendor/remixicon/remixicon.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/vendor/remixicon/remixicon.css"></noscript>
 
-
-
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-W36Z4TM2');</script>
-  <!-- End Google Tag Manager -->
-
-
-
-  <!-- Rendimiento y Seguridad , Carga diferida (defer) para scripts: -->
-
-  <link rel="canonical" href="https://www.jorge-electricidad.net/" />
-
-
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Electricista en Maldonado y Punta del Este | Jorge Electricidad</title>
-  <meta name="description"
-    content="Electricista en Maldonado y Punta del Este, Uruguay. Ofrezco servicios de instalaciones eléctricas, cámaras de seguridad, domótica, motores, porteros eléctricos y control de acceso. Atendo urgencias eléctricas.">
-  <meta name="keywords"
-    content="Electricista, Técnico Electricista, Maldonado, Punta del Este, Uruguay, Instalaciones Eléctricas, Cámaras de Seguridad, Domótica, Urgencias Eléctricas, Firma UTE">
-
-  <!-- Favicons -->
-  <meta property="og:title" content="Jorge Electricidad | Técnico Electricista en Maldonado y Punta del Este">
-  <meta property="og:description"
-    content="Jorge Electricidad, técnico electricista con más de 5 años de experiencia en Maldonado y Punta del Este, Uruguay. Realizo instalaciones, reformas, reparaciones, instalación de cámaras de seguridad, domótica, y más.">
-  <meta property="og:image" content="https://ellwinan.sirv.com/electricidad.png?profile=Example&w=192&h=192">
-  <meta property="og:url" content="https://jorge-electricidad.net/">
-  <meta property="og:type" content="website">
-
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-
-
+  <link rel="preload" href="assets/vendor/swiper/swiper-bundle.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css"></noscript>
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="preload" href="assets/css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Tilt+Neon&display=swap">
-
-
-
+  
+  <!-- FIN DE PRECARGA DE CSS -->
 
   <style>
     h2:nth-child(1) {
@@ -179,6 +129,28 @@
 
 
   <meta name="google-site-verification" content="HMZdDYgWRlop5Ooj4WUFEH6X5VGgcTu_WQ78TJCrnr8" />
+
+  <!-- Google Tag Manager (Delayed Load) -->
+  <script>
+    const loadGTM = () => {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W36Z4TM2');
+      
+      // Remove the event listeners once GTM is loaded
+      ['scroll', 'mousemove', 'touchstart', 'click'].forEach(type => 
+        window.removeEventListener(type, loadGTM, { once: true })
+      );
+    };
+
+    // Add event listeners for user interaction
+    ['scroll', 'mousemove', 'touchstart', 'click'].forEach(type => 
+      window.addEventListener(type, loadGTM, { once: true, passive: true })
+    );
+  </script>
+  <!-- End Google Tag Manager (Delayed Load) -->
 
   <style>
     /* Para dispositivos móviles */
@@ -598,19 +570,19 @@
   <!-- </div> -->
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script defer src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script defer src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script defer src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script defer src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script defer src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/load-testimonials.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/load-testimonials.js"></script>
 
-  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script defer src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -634,10 +606,13 @@
             };
             data.forEach(item => {
               const categoryName = categoryNames[item.category] || "General";
+              // Construir una URL optimizada para la miniatura
+              const thumbnailUrl = `${item.imageUrl}${item.imageUrl.includes('?') ? '&' : '?'}w=400&h=400&format=webp&q=85`;
+              
               content += `
                 <div class="col-lg-4 col-md-6 col-sm-6 portfolio-item ${item.category}">
                   <div class="portfolio-wrap">
-                    <img src="${item.imageUrl}" class="img-fluid" alt="${item.altText}" loading="lazy" decoding="async">
+                    <img src="${thumbnailUrl}" class="img-fluid" alt="${item.altText}" width="400" height="400" loading="lazy" decoding="async">
                     <div class="portfolio-info">
                       <h4>Jorge Electricidad</h4>
                       <p>${categoryName}</p>
