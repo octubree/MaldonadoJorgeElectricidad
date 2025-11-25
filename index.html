@@ -80,10 +80,16 @@
   <meta property="og:url" content="https://jorge-electricidad.net/">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts Preload -->
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"></noscript>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Tilt+Neon&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Tilt+Neon&display=swap"></noscript>
 
   <!-- MONITOREO DIFERENTE A GOOGLE ANALITYC -->
   <script data-goatcounter="https://maldonado-electricidad.goatcounter.com/count" async
@@ -628,9 +634,17 @@
             };
             data.forEach(item => {
               const categoryName = categoryNames[item.category] || "General";
-              // Construir una URL optimizada para la miniatura
-              const thumbnailUrl = `${item.imageUrl}${item.imageUrl.includes('?') ? '&' : '?'}w=400&h=400&format=webp&q=85`;
               
+              // CDN-aware thumbnail generation
+              let thumbnailUrl = '';
+              if (item.imageUrl.includes('imagekit.io')) {
+                thumbnailUrl = `${item.imageUrl}?tr=w-400,h-400,q-85,f-webp`;
+              } else if (item.imageUrl.includes('sirv.com')) {
+                thumbnailUrl = `${item.imageUrl}${item.imageUrl.includes('?') ? '&' : '?'}w=400&h=400&format=webp&q=85`;
+              } else {
+                thumbnailUrl = item.imageUrl; // Fallback for other URLs
+              }
+
               content += `
                 <div class="col-lg-4 col-md-6 col-sm-6 portfolio-item ${item.category}">
                   <div class="portfolio-wrap">
@@ -639,7 +653,7 @@
                       <h4>Jorge Electricidad</h4>
                       <p>${categoryName}</p>
                       <div class="portfolio-links">
-                        <a href="${item.imageUrl}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${item.altText}"><i class="bx bx-plus"></i></a>
+                        <a href="${item.imageUrl}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${item.altText}" aria-label="Ver imagen ampliada de ${item.altText}"><i class="bx bx-plus"></i></a>
                       </div>
                     </div>
                   </div>
