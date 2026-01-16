@@ -1,4 +1,47 @@
 [
+   
+    {
+        "name": "Gabriela Segovia",
+        "imageUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWDqy2xNkIyM3kMtR6HulOQTQmf6a8VPT6xJqI-RXk4wM8xmbLu=s54-c-rp-mo-br100",
+        "rating": 5,
+        "text": "Excelente servicio !!",
+        "googleReviewLink": "https://maps.app.goo.gl/4zFK7wcKyQpLdXsJ6"
+    },
+    {
+        "name": "Norma Nunez",
+        "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocIl4f5Fap9oVY6RqTcoCTh2qFHwj0jmh5rDg7r74PmxBR4oHA=s54-c-rp-mo-br100",
+        "rating": 5,
+        "text": "Excelente, atención muy conforme con el trabajo realizado , muy recomendable",
+        "googleReviewLink": "https://maps.app.goo.gl/Qm7vxCraCkNTBE926"
+    },
+    {
+        "name": "Jorge Rossi",
+        "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocJO8WnlqPyi60lu9WCheonPNhT46TUYU4MNkBcaOiSRKic56A=s54-c-rp-mo-br100",
+        "rating": 5,
+        "text": "Muy contento con el trabajo.Super profesional. Recomiendo",
+        "googleReviewLink": "https://maps.app.goo.gl/KQhLxEPFTUgBp9yz5"
+    },
+    {
+        "name": "Gabriel Sobredo ",
+        "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocIa-5DVCGce1aA720KOeXBzQ3rkpUgDT6C96dUPsLvFFUGGFw=s54-c-rp-mo-br100",
+        "rating": 5,
+        "text": "Jorgevun fenómeno, me solucionó un problemon!!!",
+        "googleReviewLink": "https://maps.app.goo.gl/1Wohbn1dVhDAjy7c7"
+    },
+    {
+        "name": "Gerardo Francisco Brusoni",
+        "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocIcbFQflCH7fwYz6LJfG6LGRcjL-E_HqLhHQuUHhnWFAgwXVg=s54-c-rp-mo-br100",
+        "rating": 5,
+        "text": "",
+        "googleReviewLink": "https://maps.app.goo.gl/ZXGK8iME5TLif8vK9"
+    },
+    {
+        "name": "Rafael Pintos",
+        "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocKsGzvcYG5KEHb1pIcOApIgtO9XdZjFtP_QQ6PLwgsVcJoTHA=s54-c-rp-mo-br100",
+        "rating": 5,
+        "text": "",
+        "googleReviewLink": "https://www.google.com/maps/contrib/109362008130905970479/reviews/@-34.7387553,-55.3917989,15z/data=!4m3!8m2!3m1!1e1?hl=es-419&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
+    },
   {
     "name": "Herman Gonnet",
     "imageUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWqp3fRZ2rB1R78AuHjHRXnXrXiHYuGjUo-2JBvE7Po_rzK5cUW=w72-h72-p-rp-mo-br100",
