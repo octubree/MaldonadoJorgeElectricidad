@@ -664,30 +664,28 @@
             });
             portfolioContainer.innerHTML = content;
 
-            // Initialize Isotope and GLightbox AFTER all images are loaded
-            imagesLoaded(portfolioContainer).on('always', function () {
-              const portfolioIsotope = new Isotope(portfolioContainer, {
-                itemSelector: '.portfolio-item',
-                layoutMode: 'fitRows'
-              });
+            // Initialize Isotope and GLightbox immediately
+            const portfolioIsotope = new Isotope(portfolioContainer, {
+              itemSelector: '.portfolio-item',
+              layoutMode: 'fitRows'
+            });
 
-              const portfolioFilters = document.querySelectorAll('#portfolio-flters li');
-              portfolioFilters.forEach(function (el) {
-                el.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  portfolioFilters.forEach(function (filterEl) {
-                    filterEl.classList.remove('filter-active');
-                  });
-                  this.classList.add('filter-active');
-                  portfolioIsotope.arrange({
-                    filter: this.getAttribute('data-filter')
-                  });
+            const portfolioFilters = document.querySelectorAll('#portfolio-flters li');
+            portfolioFilters.forEach(function (el) {
+              el.addEventListener('click', function (e) {
+                e.preventDefault();
+                portfolioFilters.forEach(function (filterEl) {
+                  filterEl.classList.remove('filter-active');
+                });
+                this.classList.add('filter-active');
+                portfolioIsotope.arrange({
+                  filter: this.getAttribute('data-filter')
                 });
               });
+            });
 
-              const lightbox = GLightbox({
-                selector: '.portfolio-lightbox'
-              });
+            const lightbox = GLightbox({
+              selector: '.portfolio-lightbox'
             });
 
           })
