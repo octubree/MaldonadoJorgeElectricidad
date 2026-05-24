@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Domótica on Electricidad para todos</title><link>https://www.jorge-electricidad.net/blog/tags/dom%C3%B3tica/</link><description>Recent content in Domótica on Electricidad para todos</description><generator>Hugo</generator><language>es-uy</language><managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor><webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster><lastBuildDate>Thu, 17 Apr 2025 09:00:00 -0300</lastBuildDate><atom:link href="https://www.jorge-electricidad.net/blog/tags/dom%C3%B3tica/index.xml" rel="self" type="application/rss+xml"/><item><title>Domótica en Maldonado: ¿Vale la pena invertir?</title><link>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</link><pubDate>Thu, 17 Apr 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author><guid>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</guid><description>Descubrí cómo la domótica puede mejorar la seguridad, el ahorro energético y el control remoto de tu hogar.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Domótica on Electricidad para todos</title>
+    <link>https://www.jorge-electricidad.net/blog/tags/dom%C3%B3tica/</link>
+    <description>Recent content in Domótica on Electricidad para todos</description>
+    <generator>Hugo</generator>
+    <language>es-uy</language>
+    <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
+    <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
+    <lastBuildDate>Thu, 17 Apr 2025 09:00:00 -0300</lastBuildDate>
+    <atom:link href="https://www.jorge-electricidad.net/blog/tags/dom%C3%B3tica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Domótica en Maldonado: ¿Vale la pena invertir?</title>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</link>
+      <pubDate>Thu, 17 Apr 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</guid>
+      <description>Descubrí cómo la domótica puede mejorar la seguridad, el ahorro energético y el control remoto de tu hogar.</description>
+    </item>
+  </channel>
+</rss>
