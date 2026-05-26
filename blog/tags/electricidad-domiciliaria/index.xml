@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Electricidad Domiciliaria on Electricidad para todos</title>
-    <link>https://www.jorge-electricidad.net/blog/tags/electricidad-domiciliaria/</link>
+    <link>http://localhost:1313/blog/tags/electricidad-domiciliaria/</link>
     <description>Recent content in Electricidad Domiciliaria on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
     <lastBuildDate>Mon, 09 Mar 2026 09:00:00 -0300</lastBuildDate>
-    <atom:link href="https://www.jorge-electricidad.net/blog/tags/electricidad-domiciliaria/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/electricidad-domiciliaria/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aumento de potencia eléctrica en UTE: qué tener en cuenta</title>
-      <link>https://www.jorge-electricidad.net/blog/post/2020/aumento-de-potencia-ute/</link>
+      <link>http://localhost:1313/blog/post/2020/aumento-de-potencia-ute/</link>
       <pubDate>Mon, 09 Mar 2026 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/post/2020/aumento-de-potencia-ute/</guid>
+      <guid>http://localhost:1313/blog/post/2020/aumento-de-potencia-ute/</guid>
       <description>Todo lo que conviene revisar antes de solicitar un aumento de potencia eléctrica en UTE para hogares y comercios.</description>
     </item>
     <item>
       <title>¿Qué potencia contratar en UTE para tu casa?</title>
-      <link>https://www.jorge-electricidad.net/blog/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</link>
+      <link>http://localhost:1313/blog/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</link>
       <pubDate>Sun, 17 Aug 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</guid>
+      <guid>http://localhost:1313/blog/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</guid>
       <description>Conocé cómo calcular la potencia eléctrica necesaria para tu vivienda y evitar cortes, sobrecargas o problemas con UTE.</description>
     </item>
     <item>
       <title>Señales que precisás un electricista</title>
-      <link>https://www.jorge-electricidad.net/blog/post/2020/necesitas-un-electricista/</link>
+      <link>http://localhost:1313/blog/post/2020/necesitas-un-electricista/</link>
       <pubDate>Thu, 17 Jul 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/post/2020/necesitas-un-electricista/</guid>
+      <guid>http://localhost:1313/blog/post/2020/necesitas-un-electricista/</guid>
       <description>Detectá a tiempo los síntomas más comunes de problemas eléctricos antes de que provoquen daños o riesgos de incendio.</description>
     </item>
     <item>
       <title>Guía rápida para cortes de luz</title>
-      <link>https://www.jorge-electricidad.net/blog/post/2020/guia-rapida-cortes-de-luz-/</link>
+      <link>http://localhost:1313/blog/post/2020/guia-rapida-cortes-de-luz-/</link>
       <pubDate>Tue, 17 Jun 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/post/2020/guia-rapida-cortes-de-luz-/</guid>
+      <guid>http://localhost:1313/blog/post/2020/guia-rapida-cortes-de-luz-/</guid>
       <description>Aprendé a detectar las causas más comunes de los cortes de luz domiciliarios y cuándo conviene llamar a un electricista.</description>
     </item>
     <item>
       <title>Reparar un enchufe en casa</title>
-      <link>https://www.jorge-electricidad.net/blog/post/2020/como-arreglar-un-enchufe/</link>
+      <link>http://localhost:1313/blog/post/2020/como-arreglar-un-enchufe/</link>
       <pubDate>Fri, 17 Jan 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>https://www.jorge-electricidad.net/blog/post/2020/como-arreglar-un-enchufe/</guid>
+      <guid>http://localhost:1313/blog/post/2020/como-arreglar-un-enchufe/</guid>
       <description>Aprendé cómo revisar y reparar un enchufe dañado de forma segura para evitar riesgos eléctricos en el hogar.</description>
     </item>
   </channel>
