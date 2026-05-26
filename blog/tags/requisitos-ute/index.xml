@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Requisitos UTE on Electricidad para todos</title>
-    <link>http://localhost:1313/blog/tags/requisitos-ute/</link>
+    <link>https://www.jorge-electricidad.net/blog/tags/requisitos-ute/</link>
     <description>Recent content in Requisitos UTE on Electricidad para todos</description>
     <generator>Hugo</generator>
     <language>es-uy</language>
     <managingEditor>jorgitobaliero@gmail.com (Jorge Electricidad)</managingEditor>
     <webMaster>jorgitobaliero@gmail.com (Jorge Electricidad)</webMaster>
     <lastBuildDate>Mon, 17 Mar 2025 09:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/requisitos-ute/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.jorge-electricidad.net/blog/tags/requisitos-ute/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Trámites ante UTE lo que debes saber</title>
-      <link>http://localhost:1313/blog/post/2020/tr%C3%A1mites-ante-ute-lo-que-debes-saber/</link>
+      <link>https://www.jorge-electricidad.net/blog/post/2020/tr%C3%A1mites-ante-ute-lo-que-debes-saber/</link>
       <pubDate>Mon, 17 Mar 2025 09:00:00 -0300</pubDate><author>jorgitobaliero@gmail.com (Jorge Electricidad)</author>
-      <guid>http://localhost:1313/blog/post/2020/tr%C3%A1mites-ante-ute-lo-que-debes-saber/</guid>
+      <guid>https://www.jorge-electricidad.net/blog/post/2020/tr%C3%A1mites-ante-ute-lo-que-debes-saber/</guid>
       <description>&lt;h2 id=&#34;resumen&#34;&gt;Resumen&lt;/h2&gt;&#xA;&lt;p&gt;Iniciar un trámite ante UTE en la mayoría de los casos requiere cumplir requisitos que muchas veces el usuario desconoce y se entera cuando intenta realizarlo,&#xA;a continuación analizaremos los distintos casos&lt;/p&gt;</description>
     </item>
   </channel>
