@@ -4,54 +4,77 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<!-- Updated sitemap with correct and existing routes only -->
 
 <url>
   <loc>https://www.jorge-electricidad.net/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <lastmod>2026-06-15T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://www.jorge-electricidad.net/blog/</loc>
+  <lastmod>2026-03-09T09:00:00-03:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://www.jorge-electricidad.net/blog/about/</loc>
+  <lastmod>2023-10-06T20:37:29+07:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
   <loc>https://www.jorge-electricidad.net/blog/post/2020/como-arreglar-un-enchufe/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <lastmod>2025-01-17T09:00:00-03:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.jorge-electricidad.net/blog/post/2020/conectividad-e-integraci%C3%B3n-para-c%C3%A1maras-de-seguridad/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.jorge-electricidad.net/blog/post/2020/consideraciones-de-instalaci%C3%B3n-para-c%C3%A1maras-de-seguridad/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <loc>https://www.jorge-electricidad.net/blog/post/2020/consideraciones-de-instalaci%C3%B3n-para-c%C3%A1maras-de-seguridad-2/</loc>
+  <lastmod>2025-03-17T09:00:00-03:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.jorge-electricidad.net/blog/post/2020/dom%C3%B3tica-en-maldonado-vale-la-pena-invertir/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.jorge-electricidad.net/blog/post/2020/gu%C3%ADa-completa-para-la-instalaci%C3%B3n-de-c%C3%A1maras-de-seguridad-en-maldonado/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <lastmod>2025-04-17T09:00:00-03:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.jorge-electricidad.net/blog/post/2020/guia-rapida-cortes-de-luz-/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <lastmod>2025-06-17T09:00:00-03:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.jorge-electricidad.net/blog/post/2020/necesitas-un-electricista/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <lastmod>2025-07-17T09:00:00-03:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.jorge-electricidad.net/blog/post/2020/que-potencia-contratar-en-ute-para-tu-casa/</loc>
-  <lastmod>2024-08-14T23:33:09+00:00</lastmod>
+  <lastmod>2025-08-17T09:00:00-03:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://www.jorge-electricidad.net/blog/post/2020/aumento-de-potencia-ute/</loc>
+  <lastmod>2026-03-09T09:00:00-03:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.jorge-electricidad.net/blog/post/2020/firma-de-ute-1/</loc>
+  <lastmod>2025-09-11T09:00:00-03:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.jorge-electricidad.net/blog/post/2020/firma-de-ute-2/</loc>
+  <lastmod>2025-09-12T10:00:00-03:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.jorge-electricidad.net/blog/post/2020/punto-de-medida-ute/</loc>
+  <lastmod>2025-09-11T09:00:00-03:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.jorge-electricidad.net/blog/post/2020/tr%C3%A1mites-ante-ute-lo-que-debes-saber/</loc>
+  <lastmod>2025-03-17T09:00:00-03:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>
