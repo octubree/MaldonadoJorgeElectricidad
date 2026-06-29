@@ -67,6 +67,7 @@ module.exports = async (req, res) => {
       to: [toEmail],
       subject: `Nuevo Mensaje de la Web: ${subject || name}`,
       html: emailBody,
+      ...(email ? { replyTo: email } : {}),
     });
 
     if (error) {
