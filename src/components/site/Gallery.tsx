@@ -235,16 +235,12 @@ export function Gallery() {
         <DialogContent className="max-w-3xl border-border/70 bg-background/95 p-0 backdrop-blur-xl sm:max-w-3xl">
           {selected && (
             <>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-lg">
-                {/* Lightbox uses the ORIGINAL (full-resolution) URL */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-lg bg-zinc-950/60 flex items-center justify-center sm:aspect-[16/9]">
+                {/* Lightbox uses the ORIGINAL (full-resolution) URL and displays it fully without cropping */}
                 <img
                   src={selected.imageUrl}
                   alt={selected.altText}
-                  className="absolute inset-0 size-full object-cover"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-background/95 via-transparent to-transparent"
+                  className="max-h-full max-w-full object-contain"
                 />
                 <div className="absolute left-4 top-4">
                   <Badge className="bg-primary/90 text-primary-foreground">
