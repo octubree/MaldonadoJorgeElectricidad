@@ -163,10 +163,10 @@ export function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden"
+                className="lg:hidden h-11 w-11"
                 aria-label="Abrir menú"
               >
-                <Menu className="size-5" />
+                <Menu className="size-7" />
               </Button>
             </SheetTrigger>
             <SheetContent

@@ -17,6 +17,12 @@ const contactSchema = z
     message: z
       .string()
       .min(15, "El mensaje debe tener al menos 15 caracteres"),
+    attachment: z
+      .object({
+        filename: z.string(),
+        content: z.string(), // base64 string
+      })
+      .optional(),
   })
   .superRefine((data, ctx) => {
     if (data.contact_preference.includes("whatsapp")) {
@@ -175,6 +181,9 @@ export async function POST(req: Request) {
       email: data.email ?? null,
       subject: data.subject ?? "(sin asunto)",
       message: data.message,
+      attachment: data.attachment
+        ? `${data.attachment.filename} (Base64 length: ${data.attachment.content.length} chars)`
+        : null,
       recibido: new Date().toISOString(),
     });
     return NextResponse.json({ success: true, demo: true });
@@ -189,7 +198,7 @@ export async function POST(req: Request) {
         : data.name
     }`;
 
-    const { error } = await resend.emails.send({
+    const emailPayload: any = {
       from: fromEmail,
       to: toEmail,
       subject,
@@ -197,7 +206,18 @@ export async function POST(req: Request) {
       replyTo: data.email && data.contact_preference.includes("email")
         ? data.email
         : undefined,
-    });
+    };
+
+    if (data.attachment) {
+      emailPayload.attachments = [
+        {
+          filename: data.attachment.filename,
+          content: Buffer.from(data.attachment.content, "base64"),
+        },
+      ];
+    }
+
+    const { error } = await resend.emails.send(emailPayload);
 
     if (error) {
       console.error("[contacto] Resend error:", error);

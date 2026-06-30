@@ -124,6 +124,11 @@ const CONTACT_INFO: ContactInfo[] = [
 
 export function Contact() {
   const [submitting, setSubmitting] = React.useState(false);
+  const [selectedFile, setSelectedFile] = React.useState<{
+    filename: string;
+    content: string;
+  } | null>(null);
+  const [fileError, setFileError] = React.useState<string | null>(null);
 
   const {
     register,
@@ -159,22 +164,75 @@ export function Contact() {
     });
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    setFileError(null);
+    if (!file) {
+      setSelectedFile(null);
+      return;
+    }
+
+    // Limit size to 3MB (safe for Vercel's 4.5MB request limit after base64 overhead)
+    const maxSize = 3 * 1024 * 1024;
+    if (file.size > maxSize) {
+      setFileError("El archivo supera el límite de 3MB. Sube uno más liviano.");
+      e.target.value = "";
+      setSelectedFile(null);
+      return;
+    }
+
+    // Prevent videos
+    if (file.type.startsWith("video/")) {
+      setFileError("No se permiten archivos de vídeo. Sube fotos, PDFs, imágenes o planos de CAD.");
+      e.target.value = "";
+      setSelectedFile(null);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      const base64Data = result.split(",")[1];
+      setSelectedFile({
+        filename: file.name,
+        content: base64Data,
+      });
+    };
+    reader.onerror = () => {
+      setFileError("Error al leer el archivo. Intenta de nuevo.");
+      setSelectedFile(null);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const onSubmit = async (data: ContactForm) => {
     setSubmitting(true);
     try {
+      const payload = {
+        ...data,
+        attachment: selectedFile || undefined,
+      };
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
+
       if (!res.ok) {
         const err = (await res.json().catch(() => ({}))) as {
           error?: string;
         };
         throw new Error(err?.error || "Error al enviar");
       }
+
       toast.success("¡Mensaje enviado! Te responderé a la brevedad.");
       reset();
+      setSelectedFile(null);
+      setFileError(null);
+      
+      const fileInput = document.getElementById("file-upload") as HTMLInputElement;
+      if (fileInput) fileInput.value = "";
     } catch {
       toast.error(
         "Hubo un error, intenta de nuevo o escríbeme por WhatsApp."
@@ -285,9 +343,10 @@ export function Contact() {
               <div className="flex flex-col gap-2">
                 <Label>¿Cómo prefieres que te contacte? *</Label>
                 <div className="flex flex-wrap gap-5 pt-1">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 py-1">
                     <Checkbox
                       id="pref-wa"
+                      className="size-6 sm:size-5 border-primary/60 bg-background hover:border-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary dark:bg-background dark:border-primary/60 dark:hover:border-primary cursor-pointer transition-colors shadow-sm"
                       checked={wantsWhatsapp}
                       onCheckedChange={(c) =>
                         togglePreference("whatsapp", c === true)
@@ -295,14 +354,15 @@ export function Contact() {
                     />
                     <Label
                       htmlFor="pref-wa"
-                      className="cursor-pointer font-normal text-muted-foreground"
+                      className="cursor-pointer text-sm font-semibold text-foreground/85 hover:text-foreground select-none pl-0.5 transition-colors"
                     >
                       WhatsApp
                     </Label>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 py-1">
                     <Checkbox
                       id="pref-email"
+                      className="size-6 sm:size-5 border-primary/60 bg-background hover:border-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary dark:bg-background dark:border-primary/60 dark:hover:border-primary cursor-pointer transition-colors shadow-sm"
                       checked={wantsEmail}
                       onCheckedChange={(c) =>
                         togglePreference("email", c === true)
@@ -310,7 +370,7 @@ export function Contact() {
                     />
                     <Label
                       htmlFor="pref-email"
-                      className="cursor-pointer font-normal text-muted-foreground"
+                      className="cursor-pointer text-sm font-semibold text-foreground/85 hover:text-foreground select-none pl-0.5 transition-colors"
                     >
                       Email
                     </Label>
@@ -452,6 +512,28 @@ export function Contact() {
                 {errors.message && (
                   <p id="message-error" className="text-xs text-destructive">
                     {errors.message.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Adjuntar Archivo */}
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="file-upload" className="flex items-center gap-1.5">
+                  Adjuntar archivo <span className="text-xs text-muted-foreground">(Opcional · Máx 3MB)</span>
+                </Label>
+                <Input
+                  id="file-upload"
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.webp,.heic,.pdf,.dwg,.dxf,.txt,.doc,.docx,.xls,.xlsx,.zip"
+                  onChange={handleFileChange}
+                  className="cursor-pointer file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary/20 file:text-primary hover:file:bg-primary/30 file:transition-colors file:cursor-pointer"
+                />
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  Formatos permitidos: Fotos (JPG, PNG, WebP), PDFs, planos de CAD (DWG, DXF), documentos de Office o archivos ZIP. No se permiten vídeos.
+                </p>
+                {fileError && (
+                  <p className="text-xs text-destructive font-medium">
+                    {fileError}
                   </p>
                 )}
               </div>
