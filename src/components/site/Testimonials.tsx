@@ -13,6 +13,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { TESTIMONIALS, TESTIMONIALS_INTRO } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -75,6 +76,54 @@ function TestimonialCard({
 }
 
 export function Testimonials() {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
+  const isHovered = React.useRef(false);
+  const isTouched = React.useRef(false);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    setScrollSnaps(api.scrollSnapList());
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+
+    let intervalId: NodeJS.Timeout;
+
+    const startAutoplay = () => {
+      intervalId = setInterval(() => {
+        if (!isHovered.current && !isTouched.current) {
+          api.scrollNext();
+        }
+      }, 4000);
+    };
+
+    startAutoplay();
+
+    const onPointerDown = () => {
+      isTouched.current = true;
+    };
+    const onPointerUp = () => {
+      isTouched.current = false;
+    };
+
+    api.on("pointerDown", onPointerDown);
+    api.on("pointerUp", onPointerUp);
+
+    return () => {
+      clearInterval(intervalId);
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+      api.off("pointerDown", onPointerDown);
+      api.off("pointerUp", onPointerUp);
+    };
+  }, [api]);
+
   return (
     <section id="clientes" className="relative scroll-mt-20 py-20 sm:py-28">
       {/* background glow */}
@@ -90,7 +139,11 @@ export function Testimonials() {
         <SectionHeading
           eyebrow="Clientes"
           title="Opiniones"
-          subtitle={TESTIMONIALS_INTRO}
+          subtitle={
+            <span className="font-mono text-sm sm:text-base leading-relaxed text-muted-foreground/90 max-w-xl mx-auto block italic">
+              “{TESTIMONIALS_INTRO}”
+            </span>
+          }
         />
 
         <motion.div
@@ -101,18 +154,31 @@ export function Testimonials() {
           className={cn("mx-auto mt-12 max-w-5xl px-2")}
         >
           <Carousel
+            setApi={setApi}
             opts={{
               align: "start",
               loop: true,
               slidesToScroll: 1,
             }}
             className="w-full"
+            onMouseEnter={() => {
+              isHovered.current = true;
+            }}
+            onMouseLeave={() => {
+              isHovered.current = false;
+            }}
+            onTouchStart={() => {
+              isTouched.current = true;
+            }}
+            onTouchEnd={() => {
+              isTouched.current = false;
+            }}
           >
             <CarouselContent className="-ml-4">
               {TESTIMONIALS.map((t) => (
                 <CarouselItem
                   key={t.id}
-                  className="basis-full pl-4 sm:basis-1/2 lg:basis-1/2"
+                  className="basis-[85%] pl-4 sm:basis-1/2 lg:basis-1/2"
                 >
                   <div className="h-full">
                     <TestimonialCard
@@ -127,6 +193,25 @@ export function Testimonials() {
             <CarouselPrevious className="left-1 hidden size-9 border-border/70 bg-background/80 backdrop-blur-md sm:flex" />
             <CarouselNext className="right-1 hidden size-9 border-border/70 bg-background/80 backdrop-blur-md sm:flex" />
           </Carousel>
+
+          {/* Indicadores de diapositivas (Dots) */}
+          {scrollSnaps.length > 0 && (
+            <div className="mt-8 flex justify-center gap-2">
+              {scrollSnaps.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => api?.scrollTo(idx)}
+                  className={cn(
+                    "h-2 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer",
+                    idx === selectedIndex
+                      ? "w-6 bg-primary"
+                      : "w-2 bg-primary/20 hover:bg-primary/45"
+                  )}
+                  aria-label={`Ir al comentario ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </motion.div>
 
         <motion.div

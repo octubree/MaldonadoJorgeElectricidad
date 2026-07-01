@@ -256,7 +256,7 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const TESTIMONIALS_INTRO =
-  "Atender al cliente en su hogar puede llegar a ser un desafío... creo que he sido afortunado de los clientes que me tocaron.";
+  "atender al cliente en su hogar puede llegar a ser un desafió para uno como  para el cliente, más allá de eso, creo que he tenido suerte con los clientes que me han tocado";
 
 export type BlogPost = {
   id: string;
