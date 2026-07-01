@@ -223,12 +223,12 @@ export function Testimonials() {
         >
           <Button asChild variant="outline" className="border-border/70">
             <a
-              href="https://www.google.com/search?q=Jorge+Electricidad+Maldonado"
+              href="https://share.google/yUZaIMDzv1xoNp3Zm"
               target="_blank"
               rel="noopener noreferrer"
             >
               <Star className="size-4 text-primary" fill="currentColor" />
-              Ver en Google
+              Ver comentarios en Google
             </a>
           </Button>
         </motion.div>
