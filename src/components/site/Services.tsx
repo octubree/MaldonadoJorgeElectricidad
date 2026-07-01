@@ -87,7 +87,7 @@ export function Services() {
         <SectionHeading
           eyebrow="Servicios"
           title="Lo que puedo hacer por ti"
-          subtitle="Soluciones integrales en electricidad, automatismos y seguridad — con la calidad y la responsabilidad de un técnico electricista."
+          subtitle="Soluciones integrales en electricidad y afines"
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
