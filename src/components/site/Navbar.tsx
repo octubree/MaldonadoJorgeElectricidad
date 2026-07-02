@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { Zap, Phone, Menu, ExternalLink } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -106,11 +105,7 @@ export function Navbar() {
               >
                 {link.label}
                 {isActive && (
-                  <motion.span
-                    layoutId="nav-active"
-                    className="absolute inset-x-2.5 -bottom-0.5 h-0.5 rounded-full bg-primary"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
+                  <span className="absolute inset-x-2.5 -bottom-0.5 h-0.5 rounded-full bg-primary" />
                 )}
               </Link>
             );
@@ -129,11 +124,7 @@ export function Navbar() {
             {BLOG_NAV_LINK.label}
             <ExternalLink className="size-3 opacity-60" />
             {pathname === BLOG_NAV_LINK.href && (
-              <motion.span
-                layoutId="nav-active"
-                className="absolute inset-x-2.5 -bottom-0.5 h-0.5 rounded-full bg-primary"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
+              <span className="absolute inset-x-2.5 -bottom-0.5 h-0.5 rounded-full bg-primary" />
             )}
           </Link>
         </div>
@@ -185,15 +176,12 @@ export function Navbar() {
               </SheetHeader>
 
               <div className="flex flex-col gap-1 px-4 py-2">
-                <AnimatePresence>
-                  {NAV_LINKS.map((link, i) => {
+                <>
+                  {NAV_LINKS.map((link) => {
                     const isActive = isHome && active === link.href;
                     return (
-                      <motion.div
+                      <div
                         key={link.href}
-                        initial={{ opacity: 0, x: 16 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.04 * i + 0.05 }}
                       >
                         <SheetClose asChild>
                           <Link
@@ -211,16 +199,12 @@ export function Navbar() {
                             )}
                           </Link>
                         </SheetClose>
-                      </motion.div>
+                      </div>
                     );
                   })}
 
                   {/* Blog route link */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.04 * NAV_LINKS.length + 0.05 }}
-                  >
+                  <div>
                     <SheetClose asChild>
                       <Link
                         href={BLOG_NAV_LINK.href}
@@ -230,8 +214,8 @@ export function Navbar() {
                         <ExternalLink className="size-3.5 opacity-60" />
                       </Link>
                     </SheetClose>
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                </>
               </div>
 
               <div className="mt-auto space-y-2 px-4 pb-6">

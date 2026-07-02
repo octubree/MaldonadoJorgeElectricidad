@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, BadgeCheck, CalendarDays, MapPin, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -43,12 +40,7 @@ export function Hero() {
 
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8">
         {/* Left — copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-start gap-6"
-        >
+        <div className="flex flex-col items-start gap-6">
           <Badge
             variant="outline"
             className="gap-1.5 rounded-full border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
@@ -96,7 +88,7 @@ export function Hero() {
               );
             })}
           </ul>
-        </motion.div>
+        </div>
 
         {/* Right — hero image with glow */}
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
@@ -121,12 +113,7 @@ export function Hero() {
           </div>
 
           {/* Floating stat card */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-xl border border-border/70 bg-background/90 px-4 py-3 shadow-xl backdrop-blur-md sm:flex"
-          >
+          <div className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-xl border border-border/70 bg-background/90 px-4 py-3 shadow-xl backdrop-blur-md sm:flex">
             <span className="flex size-10 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/30">
               <BadgeCheck className="size-5" />
             </span>
@@ -136,14 +123,11 @@ export function Hero() {
                 Técnico electricista
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Floating phone card */}
-          <motion.a
+          <a
             href={`tel:${BUSINESS.phoneTel}`}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
             className="absolute -top-4 -right-3 hidden items-center gap-3 rounded-xl border border-border/70 bg-background/90 px-4 py-3 shadow-xl backdrop-blur-md transition-colors hover:border-primary/40 sm:flex"
           >
             <span className="flex size-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -155,7 +139,7 @@ export function Hero() {
                 {BUSINESS.phoneDisplay}
               </p>
             </div>
-          </motion.a>
+          </a>
         </div>
       </div>
     </section>

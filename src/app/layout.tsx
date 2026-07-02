@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Analytics } from "@/components/site/Analytics";
-import { ScrollToTopButton } from "@/components/site/ScrollToTopButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -191,7 +190,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         {children}
-        <ScrollToTopButton />
         <Sonner />
         <Analytics />
       </body>

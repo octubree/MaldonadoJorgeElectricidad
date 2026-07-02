@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Share2, X, Copy, Check } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -150,39 +149,31 @@ export function ShareButton({
 
         <div className="grid gap-3 py-2">
           {/* WhatsApp — primary action */}
-          <motion.a
+          <a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
             className="flex items-center justify-center gap-2.5 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 ring-1 ring-primary/40 transition-colors hover:bg-primary/90"
           >
             <WhatsAppGlyph className="size-5" />
             Compartir por WhatsApp
-          </motion.a>
+          </a>
 
           {/* Native share (mobile only) */}
-          <AnimatePresence>
-            {canNativeShare && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
+          {canNativeShare && (
+            <div>
+              <Button
+                type="button"
+                variant="outline"
+                block
+                onClick={handleNativeShare}
+                className="w-full justify-center gap-2"
               >
-                <Button
-                  type="button"
-                  variant="outline"
-                  block
-                  onClick={handleNativeShare}
-                  className="w-full justify-center gap-2"
-                >
-                  <Share2 className="size-4" />
-                  Más opciones (mensaje, email…)
-                </Button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <Share2 className="size-4" />
+                Más opciones (mensaje, email…)
+              </Button>
+            </div>
+          )}
 
           {/* Copy link */}
           <Button

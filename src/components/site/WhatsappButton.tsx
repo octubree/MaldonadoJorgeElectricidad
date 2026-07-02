@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
 
 import {
   Tooltip,
@@ -40,23 +39,20 @@ export function WhatsappButton() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <motion.a
+        <a
           href={BUSINESS.whatsappPrefilled}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Escríbeme por WhatsApp"
-          initial={false}
-          animate={{
-            opacity: visible ? 1 : 0,
-            scale: visible ? 1 : 0.6,
-            pointerEvents: visible ? "auto" : "none",
-          }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="wa-pulse fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 ring-1 ring-primary/40 transition-colors hover:bg-primary/90 sm:bottom-6 sm:right-6"
+          className={`wa-pulse fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 ring-1 ring-primary/40 transition-all duration-200 hover:bg-primary/90 sm:bottom-6 sm:right-6 ${
+            visible
+              ? "translate-y-0 scale-100 opacity-100"
+              : "pointer-events-none translate-y-2 scale-75 opacity-0"
+          }`}
         >
           <WhatsAppGlyph className="size-7" />
           <span className="sr-only">Escríbeme por WhatsApp</span>
-        </motion.a>
+        </a>
       </TooltipTrigger>
       <TooltipContent
         side="left"
