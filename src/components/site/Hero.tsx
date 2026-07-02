@@ -99,19 +99,14 @@ export function Hero() {
         </motion.div>
 
         {/* Right — hero image with glow */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="relative mx-auto w-full max-w-lg lg:max-w-none"
-        >
+        <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
           <div
             aria-hidden
             className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/20 blur-3xl"
           />
           <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl shadow-black/40">
             <Image
-              src="/images/hero.jpg"
+              src="/images/hero.webp"
               alt="Técnico electricista trabajando en un tablero eléctrico"
               width={1344}
               height={768}
@@ -161,7 +156,7 @@ export function Hero() {
               </p>
             </div>
           </motion.a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
