@@ -204,24 +204,31 @@ export default function BlogPage() {
           <h2 className="text-lg font-semibold tracking-tight text-muted-foreground">
             Todos los artículos
           </h2>
-          <ul className="mt-6 divide-y divide-border/60 overflow-hidden rounded-2xl border border-border/70 bg-card/40">
+          <ul className="mt-6 grid gap-6 md:grid-cols-3">
             {allPosts.map((post) => (
-              <li key={post.id}>
+              <li key={post.id} className="flex flex-col">
                 <BlogArticleDialog post={post}>
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/40"
+                    className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 p-6"
                   >
-                    <div className="flex flex-col gap-1">
-                      <span className="font-medium text-foreground">
-                        {post.title}
-                      </span>
-                      <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <CalendarDays className="size-3" />
+                    <div className="flex flex-1 flex-col gap-3">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <BookOpen className="size-3.5 text-primary" />
+                        <CalendarDays className="size-3.5" />
                         {post.date}
+                      </div>
+                      <h3 className="line-clamp-2 text-base font-semibold tracking-tight text-primary group-hover:underline">
+                        {post.title}
+                      </h3>
+                      <p className="line-clamp-4 text-sm leading-relaxed text-muted-foreground">
+                        {post.excerpt}
+                      </p>
+                      <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-primary">
+                        Leer artículo
+                        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                       </span>
                     </div>
-                    <ArrowRight className="size-4 shrink-0 text-muted-foreground" />
                   </button>
                 </BlogArticleDialog>
                 {/* Hidden full content for crawlers */}
