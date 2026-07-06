@@ -50,7 +50,7 @@ export function AuthorCard() {
           <div className="mt-5 flex flex-wrap gap-2 justify-center sm:justify-start">
             <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/15">
               <BadgeCheck className="size-3.5" />
-              Firma Autorizada UTE
+              Trabajos con firma de UTE
             </span>
             <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-lg bg-muted border border-border text-muted-foreground">
               <MapPin className="size-3.5" />
