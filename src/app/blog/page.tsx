@@ -75,7 +75,6 @@ const blogJsonLd = {
 
 export default function BlogPage() {
   const featured = BLOG_POSTS.find((p) => p.featured) ?? BLOG_POSTS[0];
-  const recent = BLOG_POSTS.filter((p) => p.id !== featured.id).slice(0, 3);
   const allPosts = BLOG_POSTS;
 
   return (
@@ -161,40 +160,7 @@ export default function BlogPage() {
           </BlogArticleDialog>
         </section>
 
-        {/* Recent grid */}
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-lg font-semibold tracking-tight text-muted-foreground">
-            Artículos recientes
-          </h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {recent.map((post) => (
-              <BlogArticleDialog key={post.id} post={post}>
-                <button
-                  type="button"
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 p-6"
-                >
-                  <div className="flex flex-1 flex-col gap-3">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <BookOpen className="size-3.5 text-primary" />
-                      <CalendarDays className="size-3.5" />
-                      {post.date}
-                    </div>
-                    <h3 className="line-clamp-2 text-base font-semibold tracking-tight text-primary group-hover:underline">
-                      {post.title}
-                    </h3>
-                    <p className="line-clamp-4 text-sm leading-relaxed text-muted-foreground">
-                      {post.excerpt}
-                    </p>
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-primary">
-                      Leer artículo
-                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-                </button>
-              </BlogArticleDialog>
-            ))}
-          </div>
-        </section>
+
 
         {/* Full archive — visible to crawlers */}
         <section
