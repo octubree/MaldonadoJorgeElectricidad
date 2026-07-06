@@ -33,10 +33,19 @@ export function BlogArticleDialog({
   post: BlogPost;
   children: React.ReactNode;
 }) {
+  const [showScrollTop, setShowScrollTop] = React.useState(false);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    setShowScrollTop(e.currentTarget.scrollTop > 300);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="max-h-[90vh] max-w-[95vw] md:max-w-5xl overflow-y-auto border-border/70 bg-background/95 p-6 md:p-8 backdrop-blur-xl">
+      <DialogContent
+        onScroll={handleScroll}
+        className="max-h-[90vh] max-w-[95vw] md:max-w-5xl overflow-y-auto border-border/70 bg-background/95 p-6 md:p-8 backdrop-blur-xl"
+      >
         <div id="post-top" className="sr-only" />
         <DialogHeader className="pb-4 border-b border-border/40 text-left">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -116,6 +125,19 @@ export function BlogArticleDialog({
             </Button>
           </div>
         </DialogHeader>
+
+        {showScrollTop && (
+          <button
+            type="button"
+            onClick={() => {
+              document.getElementById("post-top")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="fixed bottom-[5.5rem] right-6 z-50 flex size-11 items-center justify-center rounded-full border border-primary/20 bg-background/80 text-muted-foreground shadow-lg shadow-black/25 backdrop-blur-md transition-all duration-200 hover:bg-background hover:text-foreground hover:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/50 sm:bottom-[6.5rem] sm:right-7.5"
+            aria-label="Subir al inicio"
+          >
+            <ArrowUp className="size-5" />
+          </button>
+        )}
       </DialogContent>
     </Dialog>
   );
