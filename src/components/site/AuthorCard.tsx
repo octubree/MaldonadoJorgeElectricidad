@@ -1,4 +1,3 @@
-import { ABOUT_BIO } from "@/components/site/data";
 import { optimizeImage } from "@/lib/image-cdn";
 import { BadgeCheck, Calendar, MapPin } from "lucide-react";
 import Link from "next/link";
@@ -44,7 +43,7 @@ export function AuthorCard() {
           </div>
 
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground text-pretty">
-            {ABOUT_BIO}
+            Me llamo Jorge, nativo de Maldonado, con más de 5 años de experiencia brindando servicios en electricidad y afines.
           </p>
 
           {/* Quick tags */}
