@@ -8,7 +8,6 @@ import {
   BLOG_POSTS,
   BUSINESS,
 } from "@/components/site/data";
-import { BlogArticleDialog } from "@/app/blog/BlogArticleDialog";
 import { Footer } from "@/components/site/Footer";
 import { WhatsappButton } from "@/components/site/WhatsappButton";
 
@@ -132,32 +131,31 @@ export default function BlogPage() {
 
         {/* Featured */}
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <BlogArticleDialog post={featured}>
-            <button
-              type="button"
-              className="group w-full overflow-hidden rounded-2xl border border-border/70 bg-card/60 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 p-6 sm:p-8 md:p-10 flex flex-col gap-4"
-            >
-              <div className="flex items-center gap-2">
-                <Badge className="bg-primary/15 text-primary ring-1 ring-primary/30">
-                  Artículo destacado
-                </Badge>
-                <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <CalendarDays className="size-3.5" />
-                  {featured.date}
-                </span>
-              </div>
-              <h2 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl lg:text-4xl text-primary group-hover:underline">
-                {featured.title}
-              </h2>
-              <p className="text-sm leading-relaxed text-muted-foreground text-pretty sm:text-base md:text-lg max-w-4xl">
-                {featured.excerpt}
-              </p>
-              <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                Leer más
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          <Link
+            href={`/blog/post/${featured.id}`}
+            scroll={false}
+            className="group block w-full overflow-hidden rounded-2xl border border-border/70 bg-card/60 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 p-6 sm:p-8 md:p-10 flex flex-col gap-4"
+          >
+            <div className="flex items-center gap-2">
+              <Badge className="bg-primary/15 text-primary ring-1 ring-primary/30">
+                Artículo destacado
+              </Badge>
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <CalendarDays className="size-3.5" />
+                {featured.date}
               </span>
-            </button>
-          </BlogArticleDialog>
+            </div>
+            <h2 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl lg:text-4xl text-primary group-hover:underline">
+              {featured.title}
+            </h2>
+            <p className="text-sm leading-relaxed text-muted-foreground text-pretty sm:text-base md:text-lg max-w-4xl">
+              {featured.excerpt}
+            </p>
+            <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+              Leer más
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </Link>
         </section>
 
 
@@ -173,30 +171,29 @@ export default function BlogPage() {
           <ul className="mt-6 grid gap-6 md:grid-cols-3">
             {allPosts.map((post) => (
               <li key={post.id} className="flex flex-col">
-                <BlogArticleDialog post={post}>
-                  <button
-                    type="button"
-                    className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 p-6"
-                  >
-                    <div className="flex flex-1 flex-col gap-3">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <BookOpen className="size-3.5 text-primary" />
-                        <CalendarDays className="size-3.5" />
-                        {post.date}
-                      </div>
-                      <h3 className="line-clamp-2 text-base font-semibold tracking-tight text-primary group-hover:underline">
-                        {post.title}
-                      </h3>
-                      <p className="line-clamp-4 text-sm leading-relaxed text-muted-foreground">
-                        {post.excerpt}
-                      </p>
-                      <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-primary">
-                        Leer artículo
-                        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                      </span>
+                <Link
+                  href={`/blog/post/${post.id}`}
+                  scroll={false}
+                  className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 p-6"
+                >
+                  <div className="flex flex-1 flex-col gap-3">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <BookOpen className="size-3.5 text-primary" />
+                      <CalendarDays className="size-3.5" />
+                      {post.date}
                     </div>
-                  </button>
-                </BlogArticleDialog>
+                    <h3 className="line-clamp-2 text-base font-semibold tracking-tight text-primary group-hover:underline">
+                      {post.title}
+                    </h3>
+                    <p className="line-clamp-4 text-sm leading-relaxed text-muted-foreground">
+                      {post.excerpt}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-primary">
+                      Leer artículo
+                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </Link>
                 {/* Hidden full content for crawlers */}
                 <div className="sr-only">
                   {post.body.map((p, i) => (
