@@ -210,13 +210,13 @@ export default async function PostPage(props: { params: Params }) {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => {
-                  document.getElementById("post-top")?.scrollIntoView({ behavior: "smooth" });
-                }}
+                asChild
                 className="group"
               >
-                <ArrowUp className="mr-2 size-4 transition-transform group-hover:-translate-y-0.5" />
-                Volver arriba
+                <a href="#post-top">
+                  <ArrowUp className="mr-2 size-4 transition-transform group-hover:-translate-y-0.5" />
+                  Volver arriba
+                </a>
               </Button>
             </div>
           </div>
