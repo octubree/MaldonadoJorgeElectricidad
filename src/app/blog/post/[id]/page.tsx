@@ -113,9 +113,9 @@ export default async function PostPage(props: { params: Params }) {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-2 rounded-full border border-primary/50 bg-background/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-foreground shadow-[0_0_12px_oklch(0.72_0.19_162_/_0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_20px_oklch(0.72_0.19_162_/_0.4)]"
           >
-            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
+            <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
             Volver al blog
           </Link>
           <a
