@@ -8,6 +8,7 @@ import { CalendarDays, ArrowLeft, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/site/Footer";
 import { WhatsappButton } from "@/components/site/WhatsappButton";
+import { ScrollToTopButton } from "@/components/site/ScrollToTopButton";
 import { BLOG_POSTS, BUSINESS } from "@/components/site/data";
 import { findPostBySlug } from "../../utils";
 import { AuthorCard } from "@/components/site/AuthorCard";
@@ -203,27 +204,15 @@ export default async function PostPage(props: { params: Params }) {
               Estoy en Maldonado y Punta del Este. Escribime y te respondo a la
               brevedad.
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Button asChild size="lg">
-                <Link href="/#contacto">Contactarme</Link>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="group"
-              >
-                <a href="#post-top">
-                  <ArrowUp className="mr-2 size-4 transition-transform group-hover:-translate-y-0.5" />
-                  Volver arriba
-                </a>
-              </Button>
-            </div>
+            <Button asChild className="mt-6" size="lg">
+              <Link href="/#contacto">Contactarme</Link>
+            </Button>
           </div>
         </section>
       </main>
 
       <Footer />
+      <ScrollToTopButton />
       <WhatsappButton />
     </div>
   );
