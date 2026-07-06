@@ -14,7 +14,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, ArrowUp } from "lucide-react";
 import Link from "next/link";
 
 import type { BlogPost } from "@/components/site/data";
@@ -37,6 +37,7 @@ export function BlogArticleDialog({
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-h-[90vh] max-w-[95vw] md:max-w-5xl overflow-y-auto border-border/70 bg-background/95 p-6 md:p-8 backdrop-blur-xl">
+        <div id="post-top" className="sr-only" />
         <DialogHeader className="pb-4 border-b border-border/40 text-left">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <CalendarDays className="size-3.5" />
@@ -73,9 +74,18 @@ export function BlogArticleDialog({
                 li: ({ ...props }) => <li className="mb-1 text-sm sm:text-base" {...props} />,
                 strong: ({ ...props }) => <strong className="font-semibold text-foreground" {...props} />,
                 em: ({ ...props }) => <em className="italic" {...props} />,
-                a: ({ ...props }) => (
-                  <a className="text-primary hover:underline font-medium" target="_blank" rel="noopener noreferrer" {...props} />
-                ),
+                a: ({ href, ...props }) => {
+                  const isInternal = href?.startsWith("#") || href?.startsWith("/");
+                  return (
+                    <a
+                      href={href}
+                      className="text-primary hover:underline font-medium"
+                      target={isInternal ? undefined : "_blank"}
+                      rel={isInternal ? undefined : "noopener noreferrer"}
+                      {...props}
+                    />
+                  );
+                },
                 img: ({ alt, ...props }) => (
                   <img className="my-4 mx-auto max-h-72 rounded-lg object-cover" alt={alt || ""} {...props} />
                 ),
@@ -88,12 +98,22 @@ export function BlogArticleDialog({
             </ReactMarkdown>
             <AuthorCard />
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <DialogClose asChild>
               <Button asChild>
                 <Link href="/#contacto">Consultar por este tema</Link>
               </Button>
             </DialogClose>
+            <Button
+              variant="outline"
+              onClick={() => {
+                document.getElementById("post-top")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group"
+            >
+              <ArrowUp className="mr-2 size-4 transition-transform group-hover:-translate-y-0.5" />
+              Volver arriba
+            </Button>
           </div>
         </DialogHeader>
       </DialogContent>

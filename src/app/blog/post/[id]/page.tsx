@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { CalendarDays, ArrowLeft } from "lucide-react";
+import { CalendarDays, ArrowLeft, ArrowUp } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/site/Footer";
@@ -128,7 +128,7 @@ export default async function PostPage(props: { params: Params }) {
       </header>
 
       <main className="flex-1">
-        <article className="mx-auto max-w-4xl px-4 pt-10 pb-16 sm:px-6 lg:px-8">
+        <article id="post-top" className="mx-auto max-w-4xl px-4 pt-10 pb-16 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="pb-6 border-b border-border/40 text-left">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -166,9 +166,18 @@ export default async function PostPage(props: { params: Params }) {
                 li: ({ ...props }) => <li className="mb-1 text-base sm:text-lg" {...props} />,
                 strong: ({ ...props }) => <strong className="font-semibold text-foreground" {...props} />,
                 em: ({ ...props }) => <em className="italic" {...props} />,
-                a: ({ ...props }) => (
-                  <a className="text-primary hover:underline font-medium" target="_blank" rel="noopener noreferrer" {...props} />
-                ),
+                a: ({ href, ...props }) => {
+                  const isInternal = href?.startsWith("#") || href?.startsWith("/");
+                  return (
+                    <a
+                      href={href}
+                      className="text-primary hover:underline font-medium"
+                      target={isInternal ? undefined : "_blank"}
+                      rel={isInternal ? undefined : "noopener noreferrer"}
+                      {...props}
+                    />
+                  );
+                },
                 img: ({ alt, ...props }) => (
                   <img className="my-6 mx-auto max-h-[450px] rounded-2xl object-cover shadow-md" alt={alt || ""} {...props} />
                 ),
@@ -194,9 +203,22 @@ export default async function PostPage(props: { params: Params }) {
               Estoy en Maldonado y Punta del Este. Escribime y te respondo a la
               brevedad.
             </p>
-            <Button asChild className="mt-6" size="lg">
-              <Link href="/#contacto">Contactarme</Link>
-            </Button>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Button asChild size="lg">
+                <Link href="/#contacto">Contactarme</Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => {
+                  document.getElementById("post-top")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="group"
+              >
+                <ArrowUp className="mr-2 size-4 transition-transform group-hover:-translate-y-0.5" />
+                Volver arriba
+              </Button>
+            </div>
           </div>
         </section>
       </main>
