@@ -18,6 +18,7 @@ import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 
 import type { BlogPost } from "@/components/site/data";
+import { AuthorCard } from "@/components/site/AuthorCard";
 
 /**
  * Wraps a trigger element (button styled by the parent) and opens a Dialog
@@ -85,6 +86,7 @@ export function BlogArticleDialog({
             >
               {post.body.join("\n\n")}
             </ReactMarkdown>
+            <AuthorCard />
           </div>
           <div className="mt-6">
             <DialogClose asChild>

@@ -16,6 +16,7 @@ import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { BlogPost } from "@/components/site/data";
+import { AuthorCard } from "@/components/site/AuthorCard";
 
 export function BlogArticleModal({ post }: { post: BlogPost }) {
   const router = useRouter();
@@ -76,6 +77,7 @@ export function BlogArticleModal({ post }: { post: BlogPost }) {
             >
               {post.body.join("\n\n")}
             </ReactMarkdown>
+            <AuthorCard />
           </div>
           <div className="mt-6">
             <DialogClose asChild>

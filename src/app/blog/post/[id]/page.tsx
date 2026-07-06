@@ -10,6 +10,7 @@ import { Footer } from "@/components/site/Footer";
 import { WhatsappButton } from "@/components/site/WhatsappButton";
 import { BLOG_POSTS, BUSINESS } from "@/components/site/data";
 import { findPostBySlug } from "../../utils";
+import { AuthorCard } from "@/components/site/AuthorCard";
 
 type Params = Promise<{ id: string }>;
 
@@ -179,6 +180,8 @@ export default async function PostPage(props: { params: Params }) {
               {post.body.join("\n\n")}
             </ReactMarkdown>
           </div>
+
+          <AuthorCard />
         </article>
 
         {/* CTA */}
