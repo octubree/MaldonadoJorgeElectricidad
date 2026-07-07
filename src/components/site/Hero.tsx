@@ -49,9 +49,14 @@ export function Hero() {
             Técnico Electricista · Trabajos con firma de UTE
           </Badge>
 
-          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl lg:text-6xl">
             Jorge Electricidad
-            <span className="mt-2 block text-primary">Maldonado & Punta del Este</span>
+            <span className="mt-2 block text-2xl font-bold text-primary sm:text-3xl lg:text-4xl">
+              Técnico Electricista
+            </span>
+            <span className="mt-1 block text-base font-normal text-muted-foreground sm:text-lg lg:text-xl">
+              Maldonado & Punta del Este
+            </span>
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
