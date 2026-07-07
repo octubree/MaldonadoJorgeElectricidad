@@ -39,7 +39,8 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 const contactSchema = z
   .object({
     name: z
-      .string({ required_error: "Ingresá tu nombre" })
+      .string()
+      .min(1, "Ingresá tu nombre")
       .min(2, "El nombre debe tener al menos 2 caracteres"),
     contact_preference: z
       .array(z.enum(["whatsapp", "email"]))
@@ -49,7 +50,8 @@ const contactSchema = z
     email: z.string().optional(),
     subject: z.string().optional(),
     message: z
-      .string({ required_error: "Ingresá tu mensaje" })
+      .string()
+      .min(1, "Ingresá tu mensaje")
       .min(15, "Contame un poco más, al menos 15 caracteres"),
   })
   .superRefine((data, ctx) => {

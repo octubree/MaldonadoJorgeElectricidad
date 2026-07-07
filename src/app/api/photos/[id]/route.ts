@@ -17,7 +17,7 @@ const updateSchema = z.object({
 });
 
 async function requireAdmin() {
-  let session: Awaited<ReturnType<typeof getServerSession>>;
+  let session: any;
   try {
     session = await getServerSession(authOptions);
   } catch {

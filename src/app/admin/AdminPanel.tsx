@@ -97,7 +97,7 @@ const CATEGORY_OPTIONS = Object.entries(CATEGORY_SLUGS) as Array<
 
 /** Slug → display label map (reverse of CATEGORY_SLUGS). */
 const SLUG_TO_LABEL: Record<string, GalleryCategory> = Object.fromEntries(
-  Object.entries(CATEGORY_SLUGS).map(([label, slug]) => [slug, label])
+  Object.entries(CATEGORY_SLUGS).map(([label, slug]) => [slug, label as GalleryCategory])
 );
 
 export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {

@@ -129,7 +129,7 @@ const createSchema = z.object({
  */
 export async function POST(req: Request) {
   // ── Auth gate ───────────────────────────────────────────────────────
-  let session: Awaited<ReturnType<typeof getServerSession>>;
+  let session: any;
   try {
     session = await getServerSession(authOptions);
   } catch (e) {

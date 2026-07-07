@@ -125,7 +125,7 @@ export function ShareButton({
       <DialogTrigger asChild>
         <Button
           type="button"
-          variant={variant}
+          variant={variant === "solid" ? "default" : variant}
           size={size}
           className={className ?? (block ? "w-full" : undefined)}
           aria-label="Compartir esta página"
@@ -165,7 +165,6 @@ export function ShareButton({
               <Button
                 type="button"
                 variant="outline"
-                block
                 onClick={handleNativeShare}
                 className="w-full justify-center gap-2"
               >
@@ -179,7 +178,6 @@ export function ShareButton({
           <Button
             type="button"
             variant="outline"
-            block
             onClick={handleCopy}
             className="w-full justify-center gap-2"
           >
