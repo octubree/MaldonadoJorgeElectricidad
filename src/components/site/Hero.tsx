@@ -60,8 +60,7 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
-            Soluciones eléctricas de obra nueva, urgencias, instalaciones,
-            domótica y sistemas de seguridad.
+            Soluciones eléctricas de obra nueva, urgencias, instalaciones, domótica, sistemas de seguridad, control de accesos, termotanques entre otros.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
