@@ -39,20 +39,20 @@ export function Hero() {
       />
 
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8">
-        {/* Left â€” copy */}
+        {/* Left — copy */}
         <div className="flex flex-col items-start gap-6">
           <Badge
             variant="outline"
             className="gap-1.5 rounded-full border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
           >
             <Zap className="size-3.5" fill="currentColor" />
-            TÃ©cnico Electricista Â· Trabajos con firma de UTE
+            Técnico Electricista · Trabajos con firma de UTE
           </Badge>
 
           <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl lg:text-6xl">
             Jorge Electricidad
             <span className="mt-2 block text-2xl font-bold text-primary sm:text-3xl lg:text-4xl">
-              TÃ©cnico Electricista
+              Técnico Electricista
             </span>
             <span className="mt-1 block text-base font-normal text-muted-foreground sm:text-lg lg:text-xl">
               Maldonado & Punta del Este
@@ -60,8 +60,8 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
-            Soluciones elÃ©ctricas de obra nueva, urgencias, instalaciones,
-            domÃ³tica y sistemas de seguridad.
+            Soluciones eléctricas de obra nueva, urgencias, instalaciones,
+            domótica y sistemas de seguridad.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -95,7 +95,7 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* Right â€” hero image with glow */}
+        {/* Right — hero image with glow */}
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none hidden lg:block">
           <div
             aria-hidden
@@ -104,7 +104,7 @@ export function Hero() {
           <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl shadow-black/40">
             <Image
               src="/images/hero.webp"
-              alt="TÃ©cnico electricista trabajando en un tablero elÃ©ctrico"
+              alt="Técnico electricista trabajando en un tablero eléctrico"
               width={1344}
               height={768}
               priority
@@ -126,7 +126,7 @@ export function Hero() {
             <div className="leading-tight">
               <p className="text-sm font-semibold text-foreground">Trabajos con firma de UTE</p>
               <p className="text-xs text-muted-foreground">
-                TÃ©cnico electricista
+                Técnico electricista
               </p>
             </div>
           </div>
@@ -140,7 +140,7 @@ export function Hero() {
               <Zap className="size-5" fill="currentColor" />
             </span>
             <div className="leading-tight">
-              <p className="text-xs text-muted-foreground">TelÃ©fono</p>
+              <p className="text-xs text-muted-foreground">Teléfono</p>
               <p className="text-sm font-semibold text-foreground">
                 {BUSINESS.phoneDisplay}
               </p>
