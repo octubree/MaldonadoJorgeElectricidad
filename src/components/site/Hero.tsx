@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { ArrowRight, BadgeCheck, CalendarDays, MapPin, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -96,7 +96,7 @@ export function Hero() {
         </div>
 
         {/* Right â€” hero image with glow */}
-        <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+        <div className="relative mx-auto w-full max-w-lg lg:max-w-none hidden lg:block">
           <div
             aria-hidden
             className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/20 blur-3xl"
