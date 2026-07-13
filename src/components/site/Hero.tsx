@@ -102,7 +102,7 @@ export function Hero() {
           />
           <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-card shadow-2xl shadow-black/40">
             <Image
-              src="/images/hero.webp"
+              src="/images/portada.webp"
               alt="Técnico electricista trabajando en un tablero eléctrico"
               width={1344}
               height={768}
