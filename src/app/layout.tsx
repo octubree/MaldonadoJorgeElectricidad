@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Analytics } from "@/components/site/Analytics";
@@ -7,11 +7,7 @@ import { Analytics } from "@/components/site/Analytics";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 // ── Constantes del sitio ────────────────────────────────────────────────
@@ -172,6 +168,8 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://ik.imagekit.io" />
+        <link rel="preconnect" href="https://ellwinan.sirv.com" />
         {/* JSON-LD: datos estructurados para SEO local (rich snippets) */}
         <script
           type="application/ld+json"
@@ -187,7 +185,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${geistSans.variable} antialiased bg-background text-foreground`}
       >
         {children}
         <Sonner />

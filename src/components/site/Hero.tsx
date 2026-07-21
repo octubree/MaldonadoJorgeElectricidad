@@ -106,8 +106,6 @@ export function Hero() {
               alt="Técnico electricista trabajando en un tablero eléctrico"
               width={1344}
               height={768}
-              priority
-              fetchPriority="high"
               sizes="(max-width: 1024px) 90vw, 50vw"
               className="aspect-[7/4] w-full object-cover"
             />
