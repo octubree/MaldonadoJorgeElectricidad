@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   BadgeCheck,
   CalendarDays,
@@ -15,9 +12,7 @@ import { ABOUT_BIO, ABOUT_HIGHLIGHTS } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { optimizeImage } from "@/lib/image-cdn";
 
-// Retrato de Jorge hosteado en ImageKit (CDN). Se sirve optimizado a
-// WebP al vuelo preservando la relación de aspecto 3:4 (sin recorte
-// cuadrado) para no cortar la imagen.
+// Retrato de Jorge hosteado en ImageKit (CDN).
 const PORTRAIT_URL = "https://ik.imagekit.io/tnzquipyu/sobre%20mi.png";
 
 const HIGHLIGHT_ICONS: Record<string, LucideIcon> = {
@@ -42,13 +37,7 @@ export function About() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — portrait */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto w-full max-w-sm lg:max-w-md"
-          >
+          <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
             <div
               aria-hidden
               className="absolute -inset-4 -z-10 rounded-[2rem] bg-primary/15 blur-2xl"
@@ -75,7 +64,7 @@ export function About() {
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right — text */}
           <div>
@@ -85,23 +74,11 @@ export function About() {
               align="left"
             />
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-6 text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg"
-            >
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
               {ABOUT_BIO}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.18 }}
-              className="mt-8 grid grid-cols-2 gap-3"
-            >
+            <div className="mt-8 grid grid-cols-2 gap-3">
               {ABOUT_HIGHLIGHTS.map((h) => {
                 const Icon = HIGHLIGHT_ICONS[h.icon];
                 return (
@@ -118,22 +95,16 @@ export function About() {
                   </div>
                 );
               })}
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.24 }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <Button asChild size="lg" className="group">
                 <a href="#contacto">
                   Hablemos
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

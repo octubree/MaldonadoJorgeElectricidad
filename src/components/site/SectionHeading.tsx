@@ -1,12 +1,8 @@
-"use client";
-
 import * as React from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
  * Section eyebrow + title + subtitle block.
- * Animates in on scroll.
  */
 export function SectionHeading({
   eyebrow,
@@ -22,11 +18,7 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    <div
       className={cn(
         "max-w-2xl",
         align === "center" ? "mx-auto text-center" : "text-left",
@@ -50,33 +42,21 @@ export function SectionHeading({
           {subtitle}
         </p>
       )}
-    </motion.div>
+    </div>
   );
 }
 
 /**
- * Wrapper that reveals its children with a fade-up on scroll.
+ * Wrapper that reveals its children.
  */
 export function Reveal({
   children,
-  delay = 0,
   className,
-  y = 24,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
   y?: number;
 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }

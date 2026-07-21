@@ -1,7 +1,4 @@
-"use client";
-
 import * as React from "react";
-import { motion } from "framer-motion";
 import {
   Zap,
   CircuitBoard,
@@ -21,18 +18,10 @@ const ICONS: Record<ServiceItem["icon"], LucideIcon> = {
   cctv: Cctv,
 };
 
-function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
+function ServiceCard({ service }: { service: ServiceItem; index: number }) {
   const Icon = ICONS[service.icon];
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{
-        duration: 0.55,
-        ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.1,
-      }}
+    <article
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60 p-6 transition-all duration-300",
         "hover:-translate-y-1 hover:border-primary/40 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/5"
@@ -76,7 +65,7 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
         Consultar
         <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
       </a>
-    </motion.article>
+    </article>
   );
 }
 
