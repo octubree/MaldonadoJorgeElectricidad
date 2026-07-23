@@ -14,12 +14,22 @@ import {
   ShieldAlert,
   ImagePlus,
   RefreshCw,
+  Search,
+  Zap,
+  Lightbulb,
+  Wrench,
+  FileCheck,
+  Camera,
+  CheckCircle2,
+  AlertCircle,
+  Edit3,
+  X,
+  type LucideIcon,
 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -28,33 +38,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
-
 import { SafeImage } from "@/components/ui/safe-image";
-import { optimizeImage } from "@/lib/image-cdn";
+
 import {
   CATEGORY_SLUGS,
   type GalleryCategory,
 } from "@/components/site/data";
 
-/** Google "G" SVG logo for the sign-in button. */
+/** Google "G" SVG logo for sign-in. */
 function GoogleG() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden>
@@ -92,14 +91,18 @@ type FetchState = {
   demo: boolean;
 };
 
-const CATEGORY_OPTIONS = Object.entries(CATEGORY_SLUGS) as Array<
-  [Exclude<GalleryCategory, "Todas">, string]
->;
-
-/** Slug → display label map (reverse of CATEGORY_SLUGS). */
-const SLUG_TO_LABEL: Record<string, GalleryCategory> = Object.fromEntries(
-  Object.entries(CATEGORY_SLUGS).map(([label, slug]) => [slug, label as GalleryCategory])
-);
+const CATEGORIES: Array<{
+  label: Exclude<GalleryCategory, "Todas">;
+  slug: string;
+  icon: LucideIcon;
+  color: string;
+}> = [
+  { label: "Electricidad", slug: "filter-electricidad", icon: Zap, color: "text-amber-400 border-amber-400/40 bg-amber-500/10" },
+  { label: "Luminarias", slug: "filter-luminarias", icon: Lightbulb, color: "text-yellow-400 border-yellow-400/40 bg-yellow-500/10" },
+  { label: "Afines", slug: "filter-afines", icon: Wrench, color: "text-emerald-400 border-emerald-400/40 bg-emerald-500/10" },
+  { label: "Firma UTE", slug: "filter-firma-ute", icon: FileCheck, color: "text-cyan-400 border-cyan-400/40 bg-cyan-500/10" },
+  { label: "Cámaras", slug: "filter-camaras-seguridad", icon: Camera, color: "text-purple-400 border-purple-400/40 bg-purple-500/10" },
+];
 
 export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
   const { data: session, status } = useSession();
@@ -111,8 +114,7 @@ export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
   });
   const [reload, setReload] = React.useState(0);
 
-  React.useEffect(() => {
-    let cancelled = false;
+  const fetchPhotos = React.useCallback(() => {
     setState((s) => ({ ...s, loading: true, error: null }));
     fetch(`/api/photos?_=${Date.now()}`, { cache: "no-store" })
       .then(async (res) => {
@@ -121,7 +123,6 @@ export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
           photos?: Photo[];
           demo?: boolean;
         };
-        if (cancelled) return;
         setState({
           photos: data.photos ?? [],
           loading: false,
@@ -130,7 +131,6 @@ export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
         });
       })
       .catch((err) => {
-        if (cancelled) return;
         setState({
           photos: [],
           loading: false,
@@ -138,26 +138,24 @@ export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
           demo: false,
         });
       });
-    return () => {
-      cancelled = true;
-    };
-  }, [reload]);
+  }, []);
 
-  // ── Not configured ──────────────────────────────────────────────────
+  React.useEffect(() => {
+    fetchPhotos();
+  }, [reload, fetchPhotos]);
+
   if (!authConfigured) {
     return <NotConfiguredPanel />;
   }
 
-  // ── Loading session ─────────────────────────────────────────────────
   if (status === "loading") {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="size-6 animate-spin text-muted-foreground" />
+        <Loader2 className="size-6 animate-spin text-primary" />
       </div>
     );
   }
 
-  // ── Not authenticated ───────────────────────────────────────────────
   if (status === "unauthenticated" || !session?.user) {
     return <SignInPanel />;
   }
@@ -167,7 +165,6 @@ export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
     return <DeniedPanel email={session.user.email ?? "?"} />;
   }
 
-  // ── Authenticated admin ─────────────────────────────────────────────
   return (
     <AdminContent
       state={state}
@@ -176,10 +173,6 @@ export function AdminPanel({ authConfigured }: { authConfigured: boolean }) {
     />
   );
 }
-
-/* ------------------------------------------------------------------ */
-/* States                                                              */
-/* ------------------------------------------------------------------ */
 
 function NotConfiguredPanel() {
   return (
@@ -191,31 +184,12 @@ function NotConfiguredPanel() {
           </div>
           <CardTitle className="text-2xl">Configuración pendiente</CardTitle>
           <CardDescription className="text-sm leading-relaxed">
-            Falta configurar las credenciales de Google OAuth para activar el
-            acceso al panel. Agregá estas variables en el archivo{" "}
-            <code className="rounded bg-secondary/60 px-1.5 py-0.5 text-xs">
-              .env
-            </code>{" "}
-            y luego recargá la página.
+            Falta configurar las credenciales de Google OAuth para activar el acceso al panel.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="rounded-lg border border-border/70 bg-background/60 p-4 font-mono text-xs leading-relaxed">
-            <p className="text-muted-foreground"># NextAuth + Google OAuth</p>
-            <p>GOOGLE_CLIENT_ID=</p>
-            <p>GOOGLE_CLIENT_SECRET=</p>
-            <p>NEXTAUTH_SECRET=</p>
-            <p>NEXTAUTH_URL=http://localhost:3000</p>
-            <p className="mt-3 text-muted-foreground"># Firebase (para fotos)</p>
-            <p>FIREBASE_SERVICE_ACCOUNT_KEY=</p>
-            <p className="mt-3 text-muted-foreground"># Resend (contacto)</p>
-            <p>RESEND_API_KEY=</p>
-            <p>TO_EMAIL=sixtamux@gmail.com</p>
-            <p>FROM_EMAIL=web@jorge-electricidad.net</p>
-          </div>
           <Button onClick={() => window.location.reload()} className="w-full">
-            <RefreshCw className="size-4" />
-            Reintentar
+            <RefreshCw className="size-4" /> Reintentar
           </Button>
         </CardContent>
       </Card>
@@ -239,8 +213,7 @@ function SignInPanel() {
           Administración de Portfolio
         </h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          Acceso exclusivo para el administrador. Iniciá sesión con tu cuenta
-          de Google autorizada.
+          Acceso exclusivo para el administrador. Iniciá sesión con tu cuenta de Google.
         </p>
         <Button
           onClick={() => signIn("google", { callbackUrl: "/admin" })}
@@ -251,12 +224,6 @@ function SignInPanel() {
           <GoogleG />
           Iniciar sesión con Google
         </Button>
-        <p className="mt-4 text-xs text-muted-foreground">
-          Solo autorizado para{" "}
-          <span className="font-medium text-foreground">
-            sixtamux@gmail.com
-          </span>
-        </p>
       </motion.div>
     </div>
   );
@@ -268,29 +235,16 @@ function DeniedPanel({ email }: { email: string }) {
       <div className="mx-auto mb-5 flex size-14 items-center justify-center rounded-2xl bg-destructive/15 text-destructive ring-1 ring-destructive/30">
         <ShieldAlert className="size-6" />
       </div>
-      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-        Acceso denegado
-      </h1>
+      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Acceso denegado</h1>
       <p className="mt-3 text-sm text-muted-foreground">
-        La cuenta{" "}
-        <span className="font-medium text-foreground">{email}</span> no está
-        autorizada para acceder a este panel.
+        La cuenta <span className="font-medium text-foreground">{email}</span> no está autorizada.
       </p>
-      <Button
-        onClick={() => signOut({ callbackUrl: "/admin" })}
-        variant="outline"
-        className="mt-8"
-      >
-        <LogOut className="size-4" />
-        Cerrar sesión
+      <Button onClick={() => signOut({ callbackUrl: "/admin" })} variant="outline" className="mt-8">
+        <LogOut className="size-4" /> Cerrar sesión
       </Button>
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/* Authenticated admin content                                         */
-/* ------------------------------------------------------------------ */
 
 function AdminContent({
   state,
@@ -301,261 +255,354 @@ function AdminContent({
   email: string;
   onReload: () => void;
 }) {
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Administración de Portfolio
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Sesión:{" "}
-            <span className="font-medium text-foreground">{email}</span>
-          </p>
-        </div>
-        <Button
-          onClick={() => signOut({ callbackUrl: "/admin" })}
-          variant="destructive"
-        >
-          <LogOut className="size-4" />
-          Cerrar Sesión
-        </Button>
-      </div>
+  const [search, setSearch] = React.useState("");
+  const [activeCategoryFilter, setActiveCategoryFilter] = React.useState<string>("all");
+  const [isAddOpen, setIsAddOpen] = React.useState(false);
+  const [photoToDelete, setPhotoToDelete] = React.useState<Photo | null>(null);
 
-      {/* Demo banner */}
-      <AnimatePresence>
-        {state.demo && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mt-6 overflow-hidden"
-          >
-            <div className="rounded-lg border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200">
-              <strong className="font-semibold">Modo demo:</strong> Firebase no
-              está configurado. Las fotos que subas{" "}
-              <span className="font-semibold">no se guardarán</span>. Configurá{" "}
-              <code className="rounded bg-amber-500/20 px-1 py-0.5 text-xs">
-                FIREBASE_SERVICE_ACCOUNT_KEY
-              </code>{" "}
-              en <code className="text-xs">.env</code> para activar la
-              persistencia.
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+  // New photo fields
+  const [newUrl, setNewUrl] = React.useState("");
+  const [newAlt, setNewAlt] = React.useState("");
+  const [newCategorySlug, setNewCategorySlug] = React.useState<string>("filter-electricidad");
+  const [savingAdd, setSavingAdd] = React.useState(false);
 
-      {/* Add form */}
-      <AddPhotoCard demo={state.demo} onCreated={onReload} />
-
-      {/* Existing photos */}
-      <div className="mt-10">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold tracking-tight">
-            Fotos Existentes
-          </h2>
-          <Button variant="ghost" size="sm" onClick={onReload}>
-            <RefreshCw className="size-4" />
-            Actualizar
-          </Button>
-        </div>
-        <PhotosGrid state={state} onReload={onReload} />
-      </div>
-    </div>
-  );
-}
-
-function AddPhotoCard({
-  demo,
-  onCreated,
-}: {
-  demo: boolean;
-  onCreated: () => void;
-}) {
-  const [imageUrl, setImageUrl] = React.useState("");
-  const [category, setCategory] = React.useState<string>("filter-luminarias");
-  const [altText, setAltText] = React.useState("");
-  const [saving, setSaving] = React.useState(false);
-
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!imageUrl || !altText.trim()) {
-      toast.error("Completá la URL y el texto alternativo.");
+    if (!newUrl.trim() || !newAlt.trim()) {
+      toast.error("Completá la URL y la descripción Alt.");
       return;
     }
-    setSaving(true);
+    setSavingAdd(true);
     try {
       const res = await fetch("/api/photos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ imageUrl, category, altText: altText.trim() }),
+        body: JSON.stringify({
+          imageUrl: newUrl.trim(),
+          category: newCategorySlug,
+          altText: newAlt.trim(),
+        }),
       });
       if (!res.ok) {
-        const err = (await res.json().catch(() => ({}))) as {
-          error?: string;
-        };
-        throw new Error(err?.error ?? "No se pudo subir la foto");
+        const err = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(err?.error ?? "No se pudo agregar la foto");
       }
-      toast.success("Foto agregada al portfolio.");
-      setImageUrl("");
-      setAltText("");
-      setCategory("filter-luminarias");
-      onCreated();
+      toast.success("¡Foto agregada al portfolio!");
+      setNewUrl("");
+      setNewAlt("");
+      setNewCategorySlug("filter-electricidad");
+      setIsAddOpen(false);
+      onReload();
     } catch (err) {
-      toast.error(
-        err instanceof Error ? err.message : "Error al subir la foto"
-      );
+      toast.error(err instanceof Error ? err.message : "Error al subir la foto");
     } finally {
-      setSaving(false);
+      setSavingAdd(false);
     }
   };
 
+  const handleDeleteConfirm = async () => {
+    if (!photoToDelete) return;
+    try {
+      const res = await fetch(`/api/photos/${photoToDelete.id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) {
+        const err = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(err?.error ?? "No se pudo eliminar");
+      }
+      toast.success("Foto eliminada correctamente.");
+      setPhotoToDelete(null);
+      onReload();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Error al eliminar");
+    }
+  };
+
+  const counts = React.useMemo(() => {
+    const acc: Record<string, number> = {
+      "filter-electricidad": 0,
+      "filter-luminarias": 0,
+      "filter-afines": 0,
+      "filter-firma-ute": 0,
+      "filter-camaras-seguridad": 0,
+    };
+    state.photos.forEach((p) => {
+      const slug = CATEGORY_SLUGS[p.category];
+      if (slug && acc[slug] !== undefined) {
+        acc[slug]++;
+      }
+    });
+    return acc;
+  }, [state.photos]);
+
+  const filteredPhotos = React.useMemo(() => {
+    return state.photos.filter((p) => {
+      const matchesSearch =
+        p.imageUrl.toLowerCase().includes(search.toLowerCase()) ||
+        p.altText.toLowerCase().includes(search.toLowerCase()) ||
+        p.id.toLowerCase().includes(search.toLowerCase());
+      const slug = CATEGORY_SLUGS[p.category];
+      const matchesCategory =
+        activeCategoryFilter === "all" || slug === activeCategoryFilter;
+      return matchesSearch && matchesCategory;
+    });
+  }, [state.photos, search, activeCategoryFilter]);
+
   return (
-    <Card className="mt-6 border-primary/40 bg-card/60">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <ImagePlus className="size-5 text-primary" />
-          Agregar foto al portfolio
-        </CardTitle>
-        <CardDescription>
-          Pegá la URL de la imagen (idealmente subida a un CDN como ImageKit o
-          Sirv) y elegí la categoría correspondiente.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form
-          onSubmit={onSubmit}
-          className="grid gap-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_2fr_auto] lg:items-end"
-        >
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="add-url">URL de la imagen</Label>
-            <Input
-              id="add-url"
-              type="url"
-              placeholder="https://..."
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              required
-            />
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+      {/* Sticky Top Bar */}
+      <header className="sticky top-0 z-40 mb-8 rounded-2xl border border-border/70 bg-card/90 p-4 shadow-xl backdrop-blur-xl">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 className="text-xl font-bold text-primary flex items-center gap-2">
+              <Zap className="size-5" /> Administración de Portfolio
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              Sesión: <span className="font-medium text-foreground">{email}</span>
+            </p>
           </div>
-          <div className="flex flex-col gap-2">
-            <Label>Categoría</Label>
-            <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {CATEGORY_OPTIONS.map(([label, slug]) => (
-                  <SelectItem key={slug} value={slug}>
-                    {label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="add-alt">Texto alternativo</Label>
-            <Input
-              id="add-alt"
-              type="text"
-              placeholder="Ej: Tablero eléctrico residencial"
-              value={altText}
-              onChange={(e) => setAltText(e.target.value)}
-              required
-              minLength={2}
-            />
-          </div>
-          <Button type="submit" disabled={saving || demo} className="w-full lg:w-auto">
-            {saving ? (
-              <Loader2 className="size-4 animate-spin" />
-            ) : (
+
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              onClick={() => setIsAddOpen(true)}
+              disabled={state.demo}
+              className="bg-primary font-semibold text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20"
+            >
               <Plus className="size-4" />
-            )}
-            Subir
-          </Button>
-        </form>
-        {demo && (
-          <p className="mt-3 text-xs text-muted-foreground">
-            Botón deshabilitado en modo demo (Firebase no configurado).
-          </p>
+              Agregar Foto Nueva
+            </Button>
+            <Button variant="outline" size="sm" onClick={onReload} disabled={state.loading}>
+              <RefreshCw className={`size-4 ${state.loading ? "animate-spin" : ""}`} />
+              Actualizar
+            </Button>
+            <Button onClick={() => signOut({ callbackUrl: "/admin" })} variant="destructive" size="sm">
+              <LogOut className="size-4" />
+              Cerrar Sesión
+            </Button>
+          </div>
+        </div>
+
+        {/* Demo Warning */}
+        {state.demo && (
+          <div className="mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 text-xs text-amber-200">
+            <strong>Modo demo:</strong> Firebase no está configurado en <code className="text-xs">.env</code>. Las fotos no se guardarán.
+          </div>
         )}
-      </CardContent>
-    </Card>
-  );
-}
 
-function PhotosGrid({
-  state,
-  onReload,
-}: {
-  state: FetchState;
-  onReload: () => void;
-}) {
-  if (state.loading) {
-    return (
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <Skeleton key={i} className="h-72 rounded-2xl" />
-        ))}
-      </div>
-    );
-  }
+        {/* Category Filters & Search */}
+        <div className="mt-4 pt-4 border-t border-border/60 flex flex-wrap items-center gap-2 text-xs">
+          <span className="font-semibold text-muted-foreground mr-2">Filtros:</span>
+          <button
+            type="button"
+            onClick={() => setActiveCategoryFilter("all")}
+            className={`px-3 py-1 rounded-full border transition-all ${
+              activeCategoryFilter === "all"
+                ? "border-primary bg-primary/20 text-primary font-medium"
+                : "border-border/70 bg-secondary/50 text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Todas ({state.photos.length})
+          </button>
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategoryFilter === cat.slug;
+            const count = counts[cat.slug] || 0;
+            const Icon = cat.icon;
+            return (
+              <button
+                key={cat.slug}
+                type="button"
+                onClick={() => setActiveCategoryFilter(cat.slug)}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-full border transition-all ${
+                  isActive
+                    ? "border-primary bg-primary/20 text-primary font-medium"
+                    : "border-border/70 bg-secondary/50 text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Icon className="size-3" />
+                {cat.label} ({count})
+              </button>
+            );
+          })}
+          <div className="ml-auto w-full sm:w-64">
+            <div className="relative">
+              <Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
+              <Input
+                placeholder="Buscar por ID, URL o alt..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-9 h-9 text-xs"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
 
-  if (state.error) {
-    return (
-      <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-6 text-center text-sm text-destructive">
-        {state.error}
-      </div>
-    );
-  }
+      {/* Grid */}
+      {state.loading ? (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <Skeleton key={i} className="aspect-[3/4] rounded-2xl" />
+          ))}
+        </div>
+      ) : filteredPhotos.length === 0 ? (
+        <div className="flex h-48 flex-col items-center justify-center rounded-2xl border border-dashed border-border/70 text-muted-foreground">
+          <p className="text-sm">No hay fotos que coincidan con el filtro.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <AnimatePresence mode="popLayout">
+            {filteredPhotos.map((photo) => (
+              <PhotoCardItem
+                key={photo.id}
+                photo={photo}
+                onReload={onReload}
+                onDeleteRequest={() => setPhotoToDelete(photo)}
+              />
+            ))}
+          </AnimatePresence>
+        </div>
+      )}
 
-  if (state.photos.length === 0) {
-    return (
-      <div className="rounded-xl border border-dashed border-border/70 bg-card/40 p-10 text-center">
-        <p className="text-sm text-muted-foreground">
-          No hay fotos. Subí la primera arriba.
-        </p>
-      </div>
-    );
-  }
+      {/* Dialog Add Photo */}
+      <Dialog open={isAddOpen} onOpenChange={setIsAddOpen}>
+        <DialogContent className="border-border/70 bg-card text-foreground sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-primary flex items-center gap-2">
+              <ImagePlus className="size-5" /> Agregar Foto al Portfolio (Firebase)
+            </DialogTitle>
+            <DialogDescription className="text-xs text-muted-foreground">
+              Pegá la URL de la imagen y elegí la categoría para publicarla inmediatamente.
+            </DialogDescription>
+          </DialogHeader>
 
-  return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <AnimatePresence mode="popLayout">
-        {state.photos.map((photo) => (
-          <PhotoCard key={photo.id} photo={photo} onReload={onReload} />
-        ))}
-      </AnimatePresence>
+          <form onSubmit={handleAddSubmit} className="space-y-4 py-2 text-xs">
+            <div className="space-y-1.5">
+              <label className="font-semibold text-foreground">URL de la imagen:</label>
+              <Input
+                placeholder="https://ik.imagekit.io/tnzquipyu/..."
+                value={newUrl}
+                onChange={(e) => setNewUrl(e.target.value)}
+                required
+              />
+            </div>
+
+            {newUrl.trim() && (
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-border/70 bg-background">
+                <SafeImage
+                  src={newUrl.trim()}
+                  alt="Vista previa"
+                  className="size-full object-contain"
+                />
+              </div>
+            )}
+
+            <div className="space-y-1.5">
+              <label className="font-semibold text-foreground">Texto Alternativo (SEO / Alt):</label>
+              <Input
+                placeholder="Ej: Instalación de tablero monofásico en Punta del Este"
+                value={newAlt}
+                onChange={(e) => setNewAlt(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="font-semibold text-foreground">Categoría:</label>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {CATEGORIES.map((cat) => {
+                  const isSelected = newCategorySlug === cat.slug;
+                  const Icon = cat.icon;
+                  return (
+                    <button
+                      key={cat.slug}
+                      type="button"
+                      onClick={() => setNewCategorySlug(cat.slug)}
+                      className={`flex items-center gap-2 rounded-lg border p-2 text-xs font-medium transition-all ${
+                        isSelected
+                          ? cat.color + " ring-1 ring-primary/50"
+                          : "border-border/70 bg-background/50 text-muted-foreground hover:bg-secondary/60"
+                      }`}
+                    >
+                      <Icon className="size-3.5 shrink-0" />
+                      <span className="truncate">{cat.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <DialogFooter className="pt-2 gap-2 sm:gap-0">
+              <Button type="button" variant="outline" onClick={() => setIsAddOpen(false)}>
+                Cancelar
+              </Button>
+              <Button type="submit" disabled={savingAdd} className="bg-primary text-primary-foreground font-semibold">
+                {savingAdd ? <Loader2 className="size-4 animate-spin" /> : <Plus className="size-4" />}
+                Guardar en Firebase
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={!!photoToDelete} onOpenChange={(open) => !open && setPhotoToDelete(null)}>
+        <DialogContent className="border-border/70 bg-card text-foreground sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-destructive flex items-center gap-2">
+              <Trash2 className="size-5" /> ¿Eliminar esta foto?
+            </DialogTitle>
+            <DialogDescription className="text-xs text-muted-foreground">
+              Esta acción eliminará la foto permanentemente de la base de datos de Firebase.
+            </DialogDescription>
+          </DialogHeader>
+
+          {photoToDelete && (
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-border/70 bg-background">
+              <SafeImage
+                src={photoToDelete.imageUrl}
+                alt={photoToDelete.altText}
+                className="size-full object-contain"
+              />
+            </div>
+          )}
+
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button variant="outline" onClick={() => setPhotoToDelete(null)}>
+              Cancelar
+            </Button>
+            <Button onClick={handleDeleteConfirm} variant="destructive">
+              Sí, eliminar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
 
-function PhotoCard({
+function PhotoCardItem({
   photo,
   onReload,
+  onDeleteRequest,
 }: {
   photo: Photo;
   onReload: () => void;
+  onDeleteRequest: () => void;
 }) {
   const [altText, setAltText] = React.useState(photo.altText);
-  const [category, setCategory] = React.useState<string>(
+  const [categorySlug, setCategorySlug] = React.useState<string>(
     CATEGORY_SLUGS[photo.category] ?? "filter-afines"
   );
   const [saving, setSaving] = React.useState(false);
-  const [deleting, setDeleting] = React.useState(false);
 
   React.useEffect(() => {
     setAltText(photo.altText);
-  }, [photo.altText]);
-
-  React.useEffect(() => {
-    setCategory(CATEGORY_SLUGS[photo.category] ?? "filter-afines");
-  }, [photo.category]);
+    setCategorySlug(CATEGORY_SLUGS[photo.category] ?? "filter-afines");
+  }, [photo.altText, photo.category]);
 
   const dirty =
     altText !== photo.altText ||
-    category !== (CATEGORY_SLUGS[photo.category] ?? "filter-afines");
+    categorySlug !== (CATEGORY_SLUGS[photo.category] ?? "filter-afines");
 
   const onSave = async () => {
     if (!altText.trim()) {
@@ -569,46 +616,19 @@ function PhotoCard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           altText: altText.trim(),
-          category,
+          category: categorySlug,
         }),
       });
       if (!res.ok) {
-        const err = (await res.json().catch(() => ({}))) as {
-          error?: string;
-        };
+        const err = (await res.json().catch(() => ({}))) as { error?: string };
         throw new Error(err?.error ?? "No se pudo guardar");
       }
-      toast.success("Cambios guardados.");
+      toast.success("Foto actualizada.");
       onReload();
     } catch (err) {
-      toast.error(
-        err instanceof Error ? err.message : "Error al guardar los cambios"
-      );
+      toast.error(err instanceof Error ? err.message : "Error al guardar");
     } finally {
       setSaving(false);
-    }
-  };
-
-  const onDelete = async () => {
-    setDeleting(true);
-    try {
-      const res = await fetch(`/api/photos/${photo.id}`, {
-        method: "DELETE",
-      });
-      if (!res.ok) {
-        const err = (await res.json().catch(() => ({}))) as {
-          error?: string;
-        };
-        throw new Error(err?.error ?? "No se pudo eliminar");
-      }
-      toast.success("Foto eliminada.");
-      onReload();
-    } catch (err) {
-      toast.error(
-        err instanceof Error ? err.message : "Error al eliminar la foto"
-      );
-    } finally {
-      setDeleting(false);
     }
   };
 
@@ -619,102 +639,85 @@ function PhotoCard({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.96 }}
       transition={{ duration: 0.25 }}
-      className="flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60 transition-all hover:border-primary/40 hover:shadow-lg"
     >
-      <div className="relative h-48 w-full overflow-hidden bg-background">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-background">
         <SafeImage
           src={photo.imageUrl}
           optimizeWidth={300}
           alt={photo.altText}
-          className="h-full w-full object-cover"
+          className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
+        <div className="absolute left-2 top-2">
+          <Badge className="bg-background/90 text-[10px] text-foreground border border-border/60 backdrop-blur-md">
+            ID: {photo.id.slice(0, 8)}...
+          </Badge>
+        </div>
+
+        <button
+          type="button"
+          onClick={onDeleteRequest}
+          className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-lg bg-destructive/90 text-destructive-foreground opacity-0 transition-opacity hover:bg-destructive group-hover:opacity-100 shadow-md backdrop-blur-md"
+          title="Eliminar foto"
+        >
+          <Trash2 className="size-4" />
+        </button>
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <p className="text-[10px] font-mono text-muted-foreground">
-          ID: <span className="text-foreground/80">{photo.id}</span>
-        </p>
-        <div className="flex flex-col gap-1.5">
-          <Label htmlFor={`alt-${photo.id}`} className="text-xs text-muted-foreground">
-            Texto alternativo
-          </Label>
+
+      <div className="flex flex-1 flex-col p-4">
+        {/* Editable Alt */}
+        <div className="mb-3 space-y-1">
+          <label className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1">
+            <Edit3 className="size-3" /> Texto Alt (SEO):
+          </label>
           <Input
-            id={`alt-${photo.id}`}
             value={altText}
             onChange={(e) => setAltText(e.target.value)}
-            className="h-8 text-sm"
+            className="h-8 text-xs bg-background/60"
           />
         </div>
-        <div className="flex flex-col gap-1.5">
-          <Label htmlFor={`cat-${photo.id}`} className="text-xs text-muted-foreground">
-            Categoría
-          </Label>
-          <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger id={`cat-${photo.id}`} className="h-8 text-sm">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {CATEGORY_OPTIONS.map(([label, slug]) => (
-                <SelectItem key={slug} value={slug}>
-                  {label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+
+        {/* Quick Category Buttons */}
+        <div className="mt-auto space-y-1.5">
+          <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider block mb-1">
+            Categoría / Filtro:
+          </span>
+          <div className="grid grid-cols-2 gap-1.5">
+            {CATEGORIES.map((cat) => {
+              const isSelected = categorySlug === cat.slug;
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={cat.slug}
+                  type="button"
+                  onClick={() => setCategorySlug(cat.slug)}
+                  className={`flex items-center gap-1.5 rounded-lg border px-2 py-1.5 text-xs font-medium transition-all ${
+                    isSelected
+                      ? cat.color + " ring-1 ring-primary/50"
+                      : "border-border/60 bg-background/40 text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  }`}
+                >
+                  <Icon className="size-3.5 shrink-0" />
+                  <span className="truncate">{cat.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
-        <div className="mt-auto flex items-center gap-2 pt-1">
+
+        {/* Save button if dirty */}
+        {dirty && (
           <Button
             onClick={onSave}
             size="sm"
-            disabled={saving || !dirty}
-            className="flex-1"
+            disabled={saving}
+            className="mt-3 w-full bg-primary font-semibold text-primary-foreground animate-pulse"
           >
-            {saving ? (
-              <Loader2 className="size-3.5 animate-spin" />
-            ) : (
-              <Save className="size-3.5" />
-            )}
-            Guardar
+            {saving ? <Loader2 className="size-3.5 animate-spin" /> : <Save className="size-3.5" />}
+            Guardar Cambios
           </Button>
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button
-                size="sm"
-                variant="destructive"
-                disabled={deleting}
-                aria-label="Eliminar foto"
-              >
-                {deleting ? (
-                  <Loader2 className="size-3.5 animate-spin" />
-                ) : (
-                  <Trash2 className="size-3.5" />
-                )}
-                Eliminar
-              </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>¿Eliminar esta foto?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Esta acción no se puede deshacer. La foto{" "}
-                  <span className="font-medium text-foreground">
-                    {photo.altText}
-                  </span>{" "}
-                  se eliminará permanentemente del portfolio.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={onDelete}
-                  className={cn("bg-destructive text-white hover:bg-destructive/90")}
-                >
-                  Sí, eliminar
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+        )}
       </div>
     </motion.div>
   );
