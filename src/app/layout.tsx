@@ -168,8 +168,6 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://ik.imagekit.io" />
-        <link rel="preconnect" href="https://ellwinan.sirv.com" />
         {/* JSON-LD: datos estructurados para SEO local (rich snippets) */}
         <script
           type="application/ld+json"

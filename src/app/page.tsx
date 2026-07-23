@@ -3,8 +3,6 @@ import { Hero } from "@/components/site/Hero";
 import { Services } from "@/components/site/Services";
 import { About } from "@/components/site/About";
 import { Footer } from "@/components/site/Footer";
-import { WhatsappButton } from "@/components/site/WhatsappButton";
-import { ScrollToTopButton } from "@/components/site/ScrollToTopButton";
 import dynamic from "next/dynamic";
 
 const Testimonials = dynamic(() => import("@/components/site/Testimonials").then((mod) => mod.Testimonials), {
@@ -18,6 +16,10 @@ const Contact = dynamic(() => import("@/components/site/Contact").then((mod) => 
 const Gallery = dynamic(() => import("@/components/site/Gallery").then((mod) => mod.Gallery), {
   loading: () => <div className="min-h-[500px] animate-pulse bg-muted/10" />,
 });
+
+const WhatsappButton = dynamic(() => import("@/components/site/WhatsappButton").then((mod) => mod.WhatsappButton));
+
+const ScrollToTopButton = dynamic(() => import("@/components/site/ScrollToTopButton").then((mod) => mod.ScrollToTopButton));
 
 
 /**

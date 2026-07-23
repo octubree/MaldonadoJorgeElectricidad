@@ -95,7 +95,7 @@ export function Hero() {
         </div>
 
         {/* Right — hero image with glow */}
-        <div className="relative mx-auto w-full max-w-lg lg:max-w-none hidden lg:block">
+        <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
           <div
             aria-hidden
             className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/20 blur-3xl"
@@ -106,8 +106,8 @@ export function Hero() {
               alt="Técnico electricista trabajando en un tablero eléctrico"
               width={1344}
               height={768}
-              priority
-              sizes="(max-width: 1024px) 90vw, 50vw"
+              priority={true}
+              sizes="(max-width: 640px) 95vw, (max-width: 1024px) 80vw, 50vw"
               className="aspect-[7/4] w-full object-cover"
             />
             <div
