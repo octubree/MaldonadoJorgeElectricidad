@@ -22,6 +22,7 @@ import {
   type GalleryItem,
 } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { SafeImage } from "@/components/ui/safe-image";
 import { optimizeImage } from "@/lib/image-cdn";
 
 type ApiPhoto = {
@@ -187,16 +188,12 @@ export function Gallery() {
                     )}
                     aria-label={`Ver ${item.altText}`}
                   >
-                    <img
-                      src={optimizeImage(item.imageUrl, 500)}
+                    <SafeImage
+                      src={item.imageUrl}
+                      optimizeWidth={500}
                       alt={item.altText}
                       loading="lazy"
                       className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {/* gradient overlay */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90"
                     />
                     {/* category badge */}
                     <div className="absolute left-3 top-3">
@@ -206,18 +203,6 @@ export function Gallery() {
                       >
                         {item.category}
                       </Badge>
-                    </div>
-                    {/* title */}
-                    <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
-                      <h3 className="text-sm font-semibold text-white sm:text-base">
-                        {item.altText}
-                      </h3>
-                      {item.description &&
-                        item.description !== item.altText && (
-                          <p className="mt-0.5 line-clamp-1 text-xs text-white/70">
-                            {item.description}
-                          </p>
-                        )}
                     </div>
                   </motion.button>
                 ))}

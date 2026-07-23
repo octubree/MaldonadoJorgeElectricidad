@@ -47,6 +47,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { SafeImage } from "@/components/ui/safe-image";
 import { optimizeImage } from "@/lib/image-cdn";
 import {
   CATEGORY_SLUGS,
@@ -621,8 +622,9 @@ function PhotoCard({
       className="flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card/60"
     >
       <div className="relative h-48 w-full overflow-hidden bg-background">
-        <img
-          src={optimizeImage(photo.imageUrl, 300)}
+        <SafeImage
+          src={photo.imageUrl}
+          optimizeWidth={300}
           alt={photo.altText}
           className="h-full w-full object-cover"
           loading="lazy"

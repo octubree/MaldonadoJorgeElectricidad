@@ -112,6 +112,7 @@ export const HERO_TRUST = [
  */
 export type GalleryCategory =
   | "Todas"
+  | "Electricidad"
   | "Luminarias"
   | "Afines"
   | "Firma UTE"
@@ -119,6 +120,7 @@ export type GalleryCategory =
 
 export const GALLERY_FILTERS: GalleryCategory[] = [
   "Todas",
+  "Electricidad",
   "Luminarias",
   "Afines",
   "Firma UTE",
@@ -127,6 +129,7 @@ export const GALLERY_FILTERS: GalleryCategory[] = [
 
 /** Firebase category slugs (stored in Firestore). */
 export const CATEGORY_SLUGS = {
+  Electricidad: "filter-electricidad",
   Luminarias: "filter-luminarias",
   Afines: "filter-afines",
   "Firma UTE": "filter-firma-ute",
