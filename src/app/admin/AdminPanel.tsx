@@ -349,7 +349,7 @@ function AdminContent({
   }, [state.photos, search, activeCategoryFilter]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
+    <div className="w-full px-4 py-6 sm:px-8 sm:py-8">
       {/* Sticky Top Bar */}
       <header className="sticky top-0 z-40 mb-8 rounded-2xl border border-border/70 bg-card/90 p-4 shadow-xl backdrop-blur-xl">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -439,8 +439,8 @@ function AdminContent({
 
       {/* Grid */}
       {state.loading ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, i) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+          {Array.from({ length: 12 }).map((_, i) => (
             <Skeleton key={i} className="aspect-[3/4] rounded-2xl" />
           ))}
         </div>
@@ -449,7 +449,7 @@ function AdminContent({
           <p className="text-sm">No hay fotos que coincidan con el filtro.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           <AnimatePresence mode="popLayout">
             {filteredPhotos.map((photo) => (
               <PhotoCardItem
